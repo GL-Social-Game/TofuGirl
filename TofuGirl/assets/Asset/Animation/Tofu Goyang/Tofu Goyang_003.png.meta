@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "0dfd49af-e7db-4079-a94f-dcf04d3ab8c2",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 523,
+  "height": 372,
+  "platformSettings": {},
+  "subMetas": {
+    "Tofu Goyang_003": {
+      "ver": "1.0.4",
+      "uuid": "2e410c35-418d-4f35-8446-6d8b186bed8a",
+      "rawTextureUuid": "0dfd49af-e7db-4079-a94f-dcf04d3ab8c2",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -11,
+      "offsetY": -30.5,
+      "trimX": 98,
+      "trimY": 127,
+      "width": 305,
+      "height": 179,
+      "rawWidth": 523,
+      "rawHeight": 372,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

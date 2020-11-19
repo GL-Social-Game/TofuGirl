@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "6368eb54-4723-47aa-877a-4358a2ec8505",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 508,
+  "height": 378,
+  "platformSettings": {},
+  "subMetas": {
+    "Tofu Hit Light_007": {
+      "ver": "1.0.4",
+      "uuid": "ab03c122-98af-4db3-8e22-1e441d71061d",
+      "rawTextureUuid": "6368eb54-4723-47aa-877a-4358a2ec8505",
+      "trimType": "custom",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 508,
+      "height": 378,
+      "rawWidth": 508,
+      "rawHeight": 378,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

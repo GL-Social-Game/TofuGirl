@@ -24,6 +24,22 @@ cc.Class({
         //         this._bar = value;
         //     }
         // },
+
+        tapToPlay:{
+            default:null,
+            type:cc.Node,
+        },
+        isStart:false,
+        playAnim:false,
+        countdown:{
+            default:null,
+            type:cc.Node,
+        },
+        countdownString:{
+            default:null,
+            type:cc.Label,  
+        },
+        countdownTimer:4,
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -34,13 +50,44 @@ cc.Class({
 
         this.main = cc.find("Canvas");
         this.main = this.main.getComponent("MainGame");
+        this.spawner=cc.find("Canvas/Spawner").getComponent("TofuSpawner");
         var self = this;
         this.node.on(cc.Node.EventType.TOUCH_END, function (event) {
-            if(!self.main.lose){
-                self.main.jump();
+            if(!self.tapToPlay.active&&self.isStart){
+                if(!self.main.lose&&!self.main.jumping){
+                    self.main.jump();
+                }
+            }
+            else{
+                if(self.tapToPlay.active){
+                    self.scheduleOnce(function(){
+                        self.spawner.spawn();
+                        self.isStart = true;
+                    },4);
+
+                    self.scheduleOnce(function(){
+                        self.main.startWhistle();
+                    },3);
+                }
+               
+                self.playAnim=true;
+                self.tapToPlay.active=false;
             }
         });
+
+    
     },
 
-    // update (dt) {},
+    update (dt) {
+        
+        if(this.playAnim){
+            this.countdown.active=true;
+            this.countdownTimer=this.countdownTimer - dt;
+            this.countdownString.string = parseInt(this.countdownTimer);
+            if(this.countdownTimer < 0){
+                this.countdown.active=false;
+                this.playAnim=false;
+            }
+        }
+    },
 });

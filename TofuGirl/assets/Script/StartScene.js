@@ -4,10 +4,9 @@
 //  - https://docs.cocos.com/creator/manual/en/scripting/reference/attributes.html
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
-
+import * as globalData from "GlobalData";
 cc.Class({
     extends: cc.Component,
-
     properties: {
         // foo: {
         //     // ATTRIBUTES:
@@ -24,18 +23,165 @@ cc.Class({
         //         this._bar = value;
         //     }
         // },
+        inGameBetting:{
+            default:null,
+            type:cc.Node,
+        },
+        loadingLayer:{
+            default:null,
+            type:cc.Node,
+        },
+
+        balance:{
+            default:null,
+            type:cc.Label,
+        },
+
+        insufficientCredit:{
+            default : null,
+            type:cc.Node,
+        },
+        settingLayer:{
+            default : null,
+            type:cc.Node,
+        },
+        musicToggle:{
+            default : null,
+            type:cc.Toggle,
+        },
+        button_click:{
+            default:null,
+            type:cc.AudioClip,
+        },
+
+    },
+    openInsufficient(){
+        this.insufficientCredit.active = true;
     },
 
+    closeInsufficient(){
+        this.insufficientCredit.active = false;
+    },
     // LIFE-CYCLE CALLBACKS:
 
-    // onLoad () {},
+    onLoad () {
+        if(cc.sys.isMobile){
+			cc.view.resizeWithBrowserSize(true);
+			cc.view.setDesignResolutionSize(1080, 1920, cc.ResolutionPolicy.EXACT_FIT);
+		}else{
+			this.node.getComponent(cc.Canvas).fitHeight = true;
+			this.node.getComponent(cc.Canvas).fitWidth = true;
+        }
+        
+        if (globalData.getSound() == 0) {
+            this.musicToggle.isChecked = false; 
+        }
+
+        this.loadingLayer.active =true;
+        this.api = this.node.getComponent("API");
+        this.api.getSettings();
+        this.getComponent("Socket").connectSocket("bet");
+        const isIOS14Device = cc.sys.os === cc.sys.OS_IOS && cc.sys.isBrowser && cc.sys.isMobile && /iPhone OS 14/.test(window.navigator.userAgent);
+        if (isIOS14Device) {
+            cc.MeshBuffer.prototype.checkAndSwitchBuffer = function (vertexCount) {
+                if (this.vertexOffset + vertexCount > 65535) {
+                    this.uploadData();
+                    this._batcher._flush();
+                }
+            };     
+            cc.MeshBuffer.prototype.forwardIndiceStartToOffset = function () {
+                this.uploadData();
+                this.switchBuffer();
+            }  
+        }
+    },
 
     start () {
 
     },
 
+    openSettings(){
+        this.settingLayer.active=true;
+    },
+
+    closeSettings(){
+        this.settingLayer.active=false;
+
+    },
+
+    fullScreen(){
+        if(cc.screen.fullScreen()){
+            cc.screen.exitFullScreen();
+        }
+        else{
+            cc.screen.requestFullScreen();
+        }
+
+    },
+
+    buttonClickSound(){
+        this.playEffect(this.button_click, globalData.getEffectVolume());
+    },
+
+    
+    playEffect:function(audio, volume){
+        this.effect_id2 = cc.audioEngine.play(audio, false);
+        if(globalData.getSound() == 0 ){
+            cc.audioEngine.setVolume(this.effect_id2, 0.0);
+        }else if(volume != null){
+            cc.audioEngine.setVolume(this.effect_id2, volume);
+        }
+        return this.effect_id2;
+    },
+
+
+    blankScreen(){
+        window.location.href="about:blank";
+    },
+
+
+    updateCreditLabel(){
+        this.loadingLayer.active =false;
+        this.balance.string = Math.round(globalData.settings.balance * 10) / 10;
+    },
     startGame(){
-        cc.director.loadScene("MainScene");
-    }
-    // update (dt) {},
+        if (this.inGameBetting.getComponent("InGameBetting").checkSufficientMoney()) {
+            this.inGameBetting.getComponent("InGameBetting").pay();
+            this.loadingLayer.active = true;
+        }
+        else {
+            this.openInsufficient();
+        }   
+    },
+    update (dt) {
+
+        if(this.loadingLayer.active){
+            if(globalData.finishGetData){
+                globalData.finishGetData = false;
+                globalData.getSocket().disconnect();
+                cc.director.loadScene("MainScene");
+
+            }
+        }
+
+    },
+
+    toggleMute(){
+        if(this.musicToggle.isChecked){
+            globalData.setSound(1);        
+            cc.audioEngine.setMusicVolume(0.5);
+            globalData.setEffectVolume(0.2);
+            globalData.setRotateVolume(1);
+
+
+
+        }
+        else{
+            globalData.setSound(0);        
+            cc.audioEngine.setMusicVolume(0);
+            globalData.setEffectVolume(0);
+            globalData.setRotateVolume(0);
+
+        }
+    },
 });

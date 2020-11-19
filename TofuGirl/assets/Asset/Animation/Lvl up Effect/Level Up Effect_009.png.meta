@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "13827886-c327-4b6f-8ddf-9acd698e8b98",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 446,
+  "height": 1477,
+  "platformSettings": {},
+  "subMetas": {
+    "Level Up Effect_009": {
+      "ver": "1.0.4",
+      "uuid": "ff642b51-a9a4-471e-9ac6-87874d6493c3",
+      "rawTextureUuid": "13827886-c327-4b6f-8ddf-9acd698e8b98",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 3.5,
+      "offsetY": -289,
+      "trimX": 33,
+      "trimY": 645,
+      "width": 387,
+      "height": 765,
+      "rawWidth": 446,
+      "rawHeight": 1477,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

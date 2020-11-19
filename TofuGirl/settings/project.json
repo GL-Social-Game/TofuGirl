@@ -1,10 +1,16 @@
 {
   "group-list": [
-    "default"
+    "default",
+    "Tofu"
   ],
   "collision-matrix": [
     [
+      true,
       true
+    ],
+    [
+      true,
+      false
     ]
   ],
   "excluded-modules": [
@@ -32,5 +38,6 @@
     "live": {
       "enable": false
     }
-  }
+  },
+  "last-module-event-record-time": 1604626543948
 }

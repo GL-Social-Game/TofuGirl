@@ -1,7 +1,7 @@
 {
   "title": "TofuGirl",
   "packageName": "org.cocos2d.demo",
-  "startScene": "7d25d0d5-143e-450d-969e-c9b51e28db92",
+  "startScene": "8a41fab7-a77a-4b32-b423-c8abbf700563",
   "excludeScenes": [],
   "orientation": {
     "landscapeLeft": true,
@@ -9,13 +9,13 @@
     "portrait": false,
     "upsideDown": false
   },
-  "webOrientation": "auto",
+  "webOrientation": "portrait",
   "inlineSpriteFrames": true,
   "inlineSpriteFrames_native": true,
   "mainCompressionType": "default",
   "mainIsRemote": false,
   "optimizeHotUpdate": false,
-  "md5Cache": true,
+  "md5Cache": false,
   "nativeMd5Cache": true,
   "encryptJs": true,
   "xxteaKey": "82939f9b-06be-42",

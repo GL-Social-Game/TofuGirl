@@ -1,16 +1,18 @@
 var balance = 10000;
 var betSelection =0;
 var sound = 1;
-var effect_volume = 0.05;
+var effect_volume = 0.2;
 var rotate_volume = 1;
 var betAmountIndex = 0;
 var multiplier = 0;
 var socket = null;
+export var currentValueSound = -1;
 export var finishGetData= false;
 export var finishGeneratingBalance=false;
 export function getSocket(){
     return socket;
 }
+    //dsg-005, game code - 24.
 
 export function setSocket(value){
     //cc.log("Setting socket");
@@ -24,7 +26,7 @@ export var settings = {
     currency : "MYR",
     exit_btn : 0,
     game_on : 0,
-    game_type : "dsg-004",
+    game_type : "dsg-005",
     guest_mode : 0,
     hyperdrive: "",
     is_demo: 0,
@@ -38,7 +40,7 @@ export var settings = {
     username: ""
 }
 export var isfullScreen =0;
-export var game_code = 25;
+export var game_code = 24;
 export var ticket_id = -1;
 
 export var host_id=0;

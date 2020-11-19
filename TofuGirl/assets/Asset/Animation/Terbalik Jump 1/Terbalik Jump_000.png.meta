@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "301cf296-5d01-4c34-bbbb-502aaeea128f",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 372,
+  "height": 672,
+  "platformSettings": {},
+  "subMetas": {
+    "Terbalik Jump_000": {
+      "ver": "1.0.4",
+      "uuid": "7571035e-75da-4efb-bc50-a0320ac36be8",
+      "rawTextureUuid": "301cf296-5d01-4c34-bbbb-502aaeea128f",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 10.5,
+      "offsetY": -104.5,
+      "trimX": 126,
+      "trimY": 313,
+      "width": 141,
+      "height": 255,
+      "rawWidth": 372,
+      "rawHeight": 672,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

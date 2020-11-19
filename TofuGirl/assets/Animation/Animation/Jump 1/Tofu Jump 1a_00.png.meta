@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "20c1ec9f-9098-446d-aea9-e8be4fdb806f",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 372,
+  "height": 672,
+  "platformSettings": {},
+  "subMetas": {
+    "Tofu Jump 1a_00": {
+      "ver": "1.0.4",
+      "uuid": "1ffd82ba-889c-45b5-ac40-3b50cd3aad0d",
+      "rawTextureUuid": "20c1ec9f-9098-446d-aea9-e8be4fdb806f",
+      "trimType": "custom",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 372,
+      "height": 672,
+      "rawWidth": 372,
+      "rawHeight": 672,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

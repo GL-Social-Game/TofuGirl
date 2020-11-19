@@ -9,22 +9,14 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        // foo: {
-        //     // ATTRIBUTES:
-        //     default: null,        // The default value will be used only when the component attaching
-        //                           // to a node for the first time
-        //     type: cc.SpriteFrame, // optional, default is typeof default
-        //     serializable: true,   // optional, default is true
-        // },
-        // bar: {
-        //     get () {
-        //         return this._bar;
-        //     },
-        //     set (value) {
-        //         this._bar = value;
-        //     }
-        // },
-
+        bgImage:{
+            default:null,
+            type:cc.Node
+        },
+        bgExtent:{
+            default:null,
+            type:cc.Node
+        },
         tofuPrefab:{
             default:null,
             type:cc.Prefab,
@@ -43,44 +35,82 @@ cc.Class({
             type:cc.Node,
         },
         currentSpawnCount:0,
-        speed:250,
+        speed:300,
+        main:{
+            default:null,
+            type:cc.Node,
+        },
+        multiplier:1,
+        lastOne:false,
     },
 
     // LIFE-CYCLE CALLBACKS:
     spawnSpeedState() {
         if (this.currentSpawnCount <= this.state1) {
-            this.speed = 300;
+
+            this.speed = 400*this.multiplier;
+            cc.log("STATE1");
         }
-        else if (this.currentSpawnCount > this.state1 && this.currentBallCount <= this.state2) {
-            this.speed = 300;
-        }
-        else if (this.currentSpawnCount > this.state2 && this.currentBallCount <= this.state3) {
-            this.speed = 350;
+        else if (this.currentSpawnCount > this.state1 && this.currentSpawnCount <= this.state2) {
+
+            if(this.currentSpawnCount == parseInt(this.state1+1)){
+                var action = cc.tintTo(2,253,228,129);
+                var action2 = cc.tintTo(2,253,228,129);
+                this.bgImage.runAction(action);
+                this.bgExtent.runAction(action2);
+
+            }
+            this.speed = 500*this.multiplier;
+            cc.log("STATE2");
+            //#FDE481  253,228,129
 
         }
-        else if (this.currentSpawnCount > this.state3 && this.currentBallCount < this.main.maxPayOut) {
-            this.speed = 400;
+        else if (this.currentSpawnCount > this.state2 && this.currentSpawnCount <= this.state3) {
+            if(this.currentSpawnCount == parseInt(this.state2+1)){
+                var action = cc.tintTo(2,194,99,163);
+                var action2 = cc.tintTo(2,194,99,163);
+                this.bgImage.runAction(action);
+                this.bgExtent.runAction(action2);
+
+
+            }
+            this.speed = 625*this.multiplier;
+            cc.log("STATE3"); 
+
+        }
+        else if (this.currentSpawnCount > this.state3 && this.currentSpawnCount < this.main.maxPayOut-1) {
+            if(this.currentSpawnCount ==  parseInt(this.state3+1)){
+                var action = cc.tintTo(2,240,61,97);
+                var action2 = cc.tintTo(2,240,61,97);
+                this.bgImage.runAction(action);
+                this.bgExtent.runAction(action2);
+
+            }
+            this.speed = 750*this.multiplier;
+            cc.log("STATE4"); 
 
         }
         else {
             //Max payout state – three moves, guarantee lose
-            this.speed = 450;
-
+            this.speed = 900*this.multiplier; 
+            this.lastOne=true;
+            cc.log("DIE");
         }
     },
 
 
-    // onLoad () {},
+    onLoad () {
+        this.main = this.main.getComponent("MainGame");
+    },
     generateState() {
-        this.state1 = 60 * 30 / 100; //15
-        this.state2 = 60 * 60 / 100; //30
-        this.state3 = 60 * 90 / 100; //45
-        this.state4 = 60;
+        this.state1 = this.main.maxPayOut  * 30 / 100; //15
+        this.state2 = this.main.maxPayOut * 60 / 100; //30
+        this.state3 = this.main.maxPayOut * 90 / 100; //45
+        this.state4 = this.main.maxPayOut;
     },
 
     start () {
         this.generateState();
-        this.spawn();
         
     },
 
@@ -92,14 +122,15 @@ cc.Class({
         tofu.parent = this.spawnLayer;
         if(random==0){//left
             tofu.position = cc.v2(this.left.x,this.startPositionY+200);
-            rigidBody.linearVelocity=cc.v2( this.speed,0);
+            tofu.getComponent("Tofu").left =true;
+            rigidBody.linearVelocity=cc.v2(this.speed,0);
         }
         else{//right
             tofu.position = cc.v2(this.right.x,this.startPositionY+200);
+            tofu.getComponent("Tofu").left =false;
             rigidBody.linearVelocity=cc.v2(- this.speed,0);
         }
         this.currentSpawnCount++;
         this.startPositionY =this.startPositionY+200;
     }
-    // update (dt) {},
 });

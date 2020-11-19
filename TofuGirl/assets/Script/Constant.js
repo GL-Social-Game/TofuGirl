@@ -1,38 +1,83 @@
-// Learn cc.Class:
-//  - https://docs.cocos.com/creator/manual/en/scripting/class.html
-// Learn Attribute:
-//  - https://docs.cocos.com/creator/manual/en/scripting/reference/attributes.html
-// Learn life-cycle callbacks:
-//  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
+// var socketURL = "192.168.100.6:8099";
+// var socketURL = "slot-grabber.casinoville.net"
+var socketURL = "https://st-socket-dsocial.slot28.com/bet";
+export var gameSocketURL = "https://st-socket-dsocial.slot28.com/game";
+// var socketURL = "localhost:7777/bet";
+// export var gameSocketURL = "localhost:7777/game";
+// var socketURL = "192.168.100.45:8098";
+// var apiURL = "http://bo.fun1881.com/api/user/";
+var apiURL = "http://bo-stage.velachip.com/api/mini-game/";
+var loginURL = "http://bo-stage.velachip.com/api/user/login";
+var prizeListURL = "http://bo-stage.velachip.com/api/berchinko/list";
+var redeemPrizeURL = "http://bo-stage.velachip.com/api/user/redeem";
+var gameHistroyURL = "http://bo-stage.velachip.com/api/berchinko/history";
+var redeemHistroyURL = "http://bo-stage.velachip.com/api/berchinko/transaction";
+var signUpURL = "http://bo-stage.velachip.com/api/user/register";
+var lobbyAPI = "http://bo-stage.velachip.com/api/user/get-info";
+var forgetPassURL = "http://bo-stage.velachip.com/api/user/forgot-password";
+var gameCode = "76";
 
-cc.Class({
-    extends: cc.Component,
+var game_version = "1.1.0";
 
-    properties: {
-        // foo: {
-        //     // ATTRIBUTES:
-        //     default: null,        // The default value will be used only when the component attaching
-        //                           // to a node for the first time
-        //     type: cc.SpriteFrame, // optional, default is typeof default
-        //     serializable: true,   // optional, default is true
-        // },
-        // bar: {
-        //     get () {
-        //         return this._bar;
-        //     },
-        //     set (value) {
-        //         this._bar = value;
-        //     }
-        // },
-    },
+export function getForgetPassURL(){
+    return forgetPassURL;
+}
 
-    // LIFE-CYCLE CALLBACKS:
+export function getSignUpURL(){
+    return signUpURL;
+}
 
-    // onLoad () {},
+export function getLobbyAPI(){
+    return lobbyAPI;
+}
 
-    start () {
+export function getRedeemHistoryURL(){
+    return redeemHistroyURL;
+}
 
-    },
+export function getGameHistoryURL(){
+    return gameHistroyURL;
+}
 
-    // update (dt) {},
-});
+export function getRedeemURL(){
+    return redeemPrizeURL;
+}
+
+export function getPrizeListURL(){
+    return prizeListURL;
+}
+
+export function getLoginURL(){
+    return loginURL;
+}
+
+export function setGameCode(value){
+    gameCode = value;
+    return (gameCode);
+}
+
+export function setSocketURL(value){
+    socketURL = value;
+    return (socketURL);
+}
+
+export function setApiURL(value){
+    apiURL = value;
+    return (apiURL);
+}
+
+export function getGameVersion(){
+    return game_version;
+}
+
+export function getSocketURL(){
+    return socketURL;
+}
+
+export function getApiURL(){
+    return apiURL;
+}
+
+export function getGameCode(){
+    return gameCode;
+}

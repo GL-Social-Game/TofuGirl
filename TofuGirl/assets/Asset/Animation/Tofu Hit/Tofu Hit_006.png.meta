@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "c5379f88-7377-48ac-aa0e-8366e192e402",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 508,
+  "height": 378,
+  "platformSettings": {},
+  "subMetas": {
+    "Tofu Hit_006": {
+      "ver": "1.0.4",
+      "uuid": "b9a206bc-3b15-4e4a-b1c2-6e4133698c48",
+      "rawTextureUuid": "c5379f88-7377-48ac-aa0e-8366e192e402",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -3.5,
+      "offsetY": 14.5,
+      "trimX": 102,
+      "trimY": 93,
+      "width": 297,
+      "height": 163,
+      "rawWidth": 508,
+      "rawHeight": 378,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

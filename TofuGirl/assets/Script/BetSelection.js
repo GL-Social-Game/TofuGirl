@@ -59,8 +59,11 @@ cc.Class({
 		for(let i = 0; i < this.selectedBet.length; i++){
 			if(i == this.selectedBetOption){
 				this.selectedBet[i].active = true;
+				this.bet_options[i].scale= cc.v2(1.2,1.2);
 			}else{
 				this.selectedBet[i].active = false;
+				this.bet_options[i].scale= cc.v2(1,1);
+
 			}
 		}
 

@@ -55,7 +55,7 @@ cc.Class({
         //this.winPayRate = [40,38,36,34,32]
         this.selectedBetOption = 10;
         this.SetAmount(0);
-        // this.mainGame = this.mainGame.getComponent("startGame");
+         this.mainGame = this.mainGame.getComponent("StartScene");
      },
 
     
@@ -102,28 +102,28 @@ cc.Class({
             for (let i = 0; i < this.selectedBet.length; i++) {
                 if (i == this.selectedBetOption) {
                     this.selectedBet[i].active = true;
-                    this.myButton[i].scale = cc.v2(2, 2);
+                    this.myButton[i].scale = cc.v2(1.2, 1.2);
 
                 } else {
                     this.selectedBet[i].active = false;
-                    this.myButton[i].scale = cc.v2(1.7, 1.7);
+                    this.myButton[i].scale = cc.v2(1, 1);
 
                 }
             }
 
             // this.currentBettingLabel.string = this.currentBetting;
-            this.moneyPerScoreLabel.string = "1 Score = $" + Math.round(this.currentBetting / globalData.winMultiplier[this.selectedBetOption] * 10000) / 10000;
+            this.moneyPerScoreLabel.string = "1 Score = " + Math.round(((this.currentBetting / globalData.winMultiplier[this.selectedBetOption])*90/100) * 10000) / 10000 +" (+10% For Perfect)";
             globalData.setMultiplier(Math.round(this.currentBetting / globalData.winMultiplier[this.selectedBetOption] * 10000) / 10000);
-            // if (globalData.settings.balance >= this.currentBetting) {
-            //     this.playButton.interactable = true;
-            //     this.mainGame.closeInsufficient();
+            if (globalData.settings.balance >= this.currentBetting) {
+                this.playButton.interactable = true;
+                this.mainGame.closeInsufficient();
 
-            // }
-            // else {
-            //     this.playButton.interactable = false;
-            //     this.mainGame.openInsufficient();
+            }
+            else {
+                this.playButton.interactable = false;
+                this.mainGame.openInsufficient();
 
-            // }
+            }
         }
         else{
             this.moneyPerScoreLabel.string = "";
@@ -141,11 +141,11 @@ cc.Class({
         for(let i = 0; i < this.selectedBet.length; i++){
 			if(i == value){
                 this.selectedBet[i].active =true;
-                this.myButton[i].scale = cc.v2(2,2);
+                this.myButton[i].scale = cc.v2(1.2,1.2);
         
 			}else{
                 this.selectedBet[i].active =false;
-                this.myButton[i].scale = cc.v2(1.7,1.7);
+                this.myButton[i].scale = cc.v2(1,1);
 
 			}
         }
@@ -159,18 +159,18 @@ cc.Class({
 
         
        // this.currentBettingLabel.string = this.currentBetting;
-       this.moneyPerScoreLabel.string ="1 Score = $"+ Math.round(this.currentBetting/ globalData.winMultiplier[this.selectedBetOption]*10000)/10000;
+       this.moneyPerScoreLabel.string = "1 Score = " + Math.round(((this.currentBetting / globalData.winMultiplier[this.selectedBetOption])*90/100) * 10000) / 10000 +" (+10% For Perfect)";
        globalData.setMultiplier(Math.round(this.currentBetting/globalData.winMultiplier[this.selectedBetOption]*10000)/10000);
 
-        // if (globalData.settings.balance >= this.currentBetting) {
+        if (globalData.settings.balance >= this.currentBetting) {
             this.playButton.interactable = true;
-        //     this.mainGame.closeInsufficient();
+            this.mainGame.closeInsufficient();
 
-        // }
-        // else {
-        //     this.playButton.interactable = false;
-        //     this.mainGame.openInsufficient();
-        // }
+        }
+        else {
+            this.playButton.interactable = false;
+            this.mainGame.openInsufficient();
+        }
 
 	},
     
@@ -182,19 +182,19 @@ cc.Class({
         return false;
     },
     pay(){
-       // globalData.setBalance(globalData.getBalance()-this.currentBetting);
-        // var emit_result = {
-        //     'host_id':globalData.host_id,
-        //     'access_token':globalData.access_token,
-        //     'game_code': 25,
-        //     'betAmount': this.currentBetting,
-        //     "key": "blackWhite bet with these index 1st",
-        //     "description": "bet",
-        //     "user_id": globalData.settings.user_id,
-        //     "scorePerOne" : globalData.getMultiplier(),
-        // };
+       globalData.setBalance(globalData.getBalance()-this.currentBetting);
+        var emit_result = {
+            'host_id':globalData.host_id,
+            'access_token':globalData.access_token,
+            'game_code': 24,
+            'betAmount': this.currentBetting,
+            "key": "TofuGirl bet with these index 1st",
+            "description": "bet",
+            "user_id": globalData.settings.user_id,
+            "scorePerOne" : globalData.getMultiplier(),
+        };
 
-        // globalData.getSocket().emit('bet', emit_result);
+        globalData.getSocket().emit('bet', emit_result);
     }
     
     // update (dt) {},

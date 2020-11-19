@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "dce7f980-c275-42af-a6e0-e323d5ed98ce",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 372,
+  "height": 672,
+  "platformSettings": {},
+  "subMetas": {
+    "Tofu Money Rotate_014": {
+      "ver": "1.0.4",
+      "uuid": "e6b664e5-bdf1-42d5-9a11-ddd888888c06",
+      "rawTextureUuid": "dce7f980-c275-42af-a6e0-e323d5ed98ce",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 3.5,
+      "offsetY": -162.5,
+      "trimX": 125,
+      "trimY": 433,
+      "width": 129,
+      "height": 131,
+      "rawWidth": 372,
+      "rawHeight": 672,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

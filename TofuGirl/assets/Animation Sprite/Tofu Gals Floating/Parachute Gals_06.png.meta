@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "7a427123-cbdc-47ed-83af-a843ddb7dfc5",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 372,
+  "height": 672,
+  "platformSettings": {},
+  "subMetas": {
+    "Parachute Gals_06": {
+      "ver": "1.0.4",
+      "uuid": "10fab988-3b22-418a-96f0-ef6b5558c946",
+      "rawTextureUuid": "7a427123-cbdc-47ed-83af-a843ddb7dfc5",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 33.5,
+      "trimX": 25,
+      "trimY": 40,
+      "width": 322,
+      "height": 525,
+      "rawWidth": 372,
+      "rawHeight": 672,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

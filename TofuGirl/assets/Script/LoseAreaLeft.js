@@ -25,6 +25,10 @@ cc.Class({
         //     }
         // },
 
+        tofuAnimator:{
+            default:null,
+            type:cc.Animation
+        },
         myParent:{
             default: null,        // The default value will be used only when the component attaching
             type:cc.RigidBody,
@@ -36,20 +40,21 @@ cc.Class({
     // onLoad () {},
 
     start () {
+     
         var manager = cc.director.getCollisionManager();
         manager.enabled = true;
-
     },
 
     onCollisionEnter: function (otherCollider, self) {
         if(otherCollider.node.name=="TofuGirl"){
             this.myParent.linearVelocity=cc.v2(0,0);
+            this.tofuAnimator.play("TofuGoyang");
             cc.find("Canvas/TofuGirl").getComponent(cc.RigidBody).type =  cc.RigidBodyType.Kinematic;
             cc.find("Canvas/TofuGirl").getComponent(cc.RigidBody).fixedRotation =  true;
             cc.find("Canvas/TofuGirl").getComponent(cc.RigidBody).linearVelocity=cc.v2(0,0);
-
             cc.find("Canvas").getComponent("MainGame").lose = true;
             cc.find("Canvas").getComponent("MainGame").jumpLeft();
+
 
         }
     },
