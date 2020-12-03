@@ -195,7 +195,9 @@ cc.Class({
                 "scorePerOne": globalData.getMultiplier(),
                 'api_url':globalData.api_Url,
             };
-
+            if(globalData.isEncrypt){
+                emit_result = btoa(JSON.stringify(emit_result));
+            }
             globalData.getSocket().emit('bet', emit_result);
         }
         else {

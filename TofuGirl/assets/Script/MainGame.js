@@ -343,7 +343,9 @@ cc.Class({
                 'api_url':globalData.api_Url,
 
             };
-    
+            if(globalData.isEncrypt){
+                emit_result = btoa(JSON.stringify(emit_result));
+            }
             globalData.getSocket().emit('send-result', emit_result);
         }
         else{
@@ -367,6 +369,9 @@ cc.Class({
                 'api_url':globalData.api_Url,
     
             };
+            if(globalData.isEncrypt){
+                emit_result = btoa(JSON.stringify(emit_result));
+            }
             globalData.getSocket().emit('bet', emit_result);
         }
         else{

@@ -45,6 +45,9 @@ export var isfullScreen =0;
 export var game_code = 24;
 export var ticket_id = -1;
 
+export var errorMessage = "";
+export var isEncrypt = true;
+
 export var host_id=0;
 export var access_token = 0;
 export var winMultiplier = [40,38,36,34,32];
