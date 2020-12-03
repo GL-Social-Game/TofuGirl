@@ -6,6 +6,8 @@ var rotate_volume = 1;
 var betAmountIndex = 0;
 var multiplier = 0;
 var socket = null;
+export var isDemo = false;
+export var isProduction = false;
 export var currentValueSound = -1;
 export var finishGetData= false;
 export var finishGeneratingBalance=false;
@@ -107,3 +109,6 @@ export function getRotateVolume(){
     return rotate_volume;
 }
 
+
+export var api_Url;
+export var geoIP_Url;

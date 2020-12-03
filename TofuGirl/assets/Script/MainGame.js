@@ -175,7 +175,9 @@ cc.Class({
 
     onLoad () {
         this.calculateBetAmount();
-        this.getComponent("Socket").connectSocket("game");
+        if(!globalData.getSocket()){
+            this.getComponent("Socket").connectSocket();
+        }
         this.multiplier = globalData.getMultiplier();
         this.maxPayOut= globalData.maxPayOut;
         globalData.currentValueSound=-1;
@@ -328,50 +330,63 @@ cc.Class({
        //#endregion
 
     sendEndResult(){
-        var emit_result = {
-            'host_id':globalData.host_id,
-            'access_token':globalData.access_token,
-            'ticket_id': globalData.ticket_id,
-            'result': this.total_add,
-            'key': "TofuGirl Score: " + this.total_add,
-            'game_code': globalData.game_code,
-            'description': "Send actual result to server",
-            'user_id': globalData.settings.user_id,
-        };
+        if(!globalData.isDemo){
+            var emit_result = {
+                'host_id':globalData.host_id,
+                'access_token':globalData.access_token,
+                'ticket_id': globalData.ticket_id,
+                'result': this.total_add,
+                'key': "TofuGirl Score: " + this.total_add,
+                'game_code': globalData.game_code,
+                'description': "Send actual result to server",
+                'user_id': globalData.settings.user_id,
+                'api_url':globalData.api_Url,
 
-        globalData.getSocket().emit('send-result', emit_result);
+            };
+    
+            globalData.getSocket().emit('send-result', emit_result);
+        }
+        else{
+            globalData.settings.balance+=this.total_add;
+        }
         this.generatingBalance = true;
 
     },
 
     restartGame(){
-        var emit_result = {
-            'host_id':globalData.host_id,
-            'access_token':globalData.access_token,
-            'game_code': 24,
-            'betAmount': this.currentBetting,
-            "key": "TofuGirl bet with these index 1st",
-            "description": "bet",
-            "user_id": globalData.settings.user_id,
-            "scorePerOne" : globalData.getMultiplier(),
-        };
+        if(!globalData.isDemo){
+            var emit_result = {
+                'host_id':globalData.host_id,
+                'access_token':globalData.access_token,
+                'game_code': 24,
+                'betAmount': this.currentBetting,
+                "key": "TofuGirl bet with these index 1st",
+                "description": "bet",
+                "user_id": globalData.settings.user_id,
+                "scorePerOne" : globalData.getMultiplier(),
+                'api_url':globalData.api_Url,
+    
+            };
+            globalData.getSocket().emit('bet', emit_result);
+        }
+        else{
+            globalData.settings.balance -=this.currentBetting;
+        }
         this.loadingLayer.opacity = 255;
         this.loadingLayer.active = true;
         this.isRestarting = true;
-        globalData.getSocket().emit('bet', emit_result);
     
     },
 
     
     backToHome(){
         this.loadingLayer.active = true;
-        globalData.getSocket().disconnect();
+        // globalData.getSocket().disconnect();
         cc.director.loadScene("StartScene");
     },
 
     start () {
-        this.balance.string=globalData.settings.balance;
-
+        this.balance.string=Math.round((globalData.settings.balance) * 100) / 100;
     },
 
     updateScore(perfect){
@@ -416,7 +431,9 @@ cc.Class({
        
     
     },
-
+    demoGenerateScore(){
+        globalData.maxPayOut = parseInt(Math.random() * (60 + 1 - 21) + 21);
+    },
    
     update (dt) {
 
@@ -425,23 +442,40 @@ cc.Class({
         }
 
         if(this.isRestarting){
-            if(globalData.finishGetData){
-                this.isRestarting = false;
-                globalData.finishGetData=false;
-                globalData.getSocket().disconnect();
+            if(!globalData.isDemo){
+                if(globalData.finishGetData){
+                    this.isRestarting = false;
+                    globalData.finishGetData=false;
+                    // globalData.getSocket().disconnect();
+                    cc.director.loadScene("MainScene");
+                }
+            }
+            else{
+                this.demoGenerateScore();
                 cc.director.loadScene("MainScene");
             }
+          
         }
 
         if(this.generatingBalance){
-            if(globalData.finishGeneratingBalance){
-                globalData.finishGeneratingBalance =false;
-                this.generatingBalance = false;
-                this.replayButton.node.active=true;
-                this.balance.string=globalData.settings.balance;
-                this.resultBalance.string=globalData.settings.balance;
-
+            if(!globalData.isDemo){
+                if(globalData.finishGeneratingBalance){
+                    globalData.finishGeneratingBalance =false;
+                    this.generatingBalance = false;
+                    this.replayButton.node.active=true;
+                    this.balance.string=Math.round((globalData.settings.balance) * 100) / 100;
+                    this.resultBalance.string=Math.round((globalData.settings.balance) * 100) / 100;
+    
+                }
             }
+            else{
+                this.replayButton.node.active=true;
+                this.balance.string=Math.round((globalData.settings.balance) * 100) / 100;
+                this.resultBalance.string=Math.round((globalData.settings.balance) * 100) / 100;
+                this.loadingLayer.active = false;
+                this.generatingBalance = false;
+            }
+            
         }
     },
 

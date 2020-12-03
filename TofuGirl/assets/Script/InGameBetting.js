@@ -182,19 +182,25 @@ cc.Class({
         return false;
     },
     pay(){
-       globalData.setBalance(globalData.getBalance()-this.currentBetting);
-        var emit_result = {
-            'host_id':globalData.host_id,
-            'access_token':globalData.access_token,
-            'game_code': 24,
-            'betAmount': this.currentBetting,
-            "key": "TofuGirl bet with these index 1st",
-            "description": "bet",
-            "user_id": globalData.settings.user_id,
-            "scorePerOne" : globalData.getMultiplier(),
-        };
+    //    globalData.setBalance(globalData.getBalance()-this.currentBetting);
+        if (!globalData.isDemo) {
+            var emit_result = {
+                'host_id': globalData.host_id,
+                'access_token': globalData.access_token,
+                'game_code': 24,
+                'betAmount': this.currentBetting,
+                "key": "TofuGirl bet with these index 1st",
+                "description": "bet",
+                "user_id": globalData.settings.user_id,
+                "scorePerOne": globalData.getMultiplier(),
+                'api_url':globalData.api_Url,
+            };
 
-        globalData.getSocket().emit('bet', emit_result);
+            globalData.getSocket().emit('bet', emit_result);
+        }
+        else {
+            globalData.settings.balance -= this.currentBetting;
+        }
     }
     
     // update (dt) {},

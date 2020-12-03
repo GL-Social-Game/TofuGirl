@@ -64,11 +64,11 @@ cc.Class({
             // window.io = SocketIO || io;
             // not using bet in ketupat
             if(data == "bet"){
-                var tempSocket = io.connect(constant.getSocketURL(),{'force new connection':true});
+                var tempSocket = io.connect(constant.getSocketURL());
                 global.setSocket(tempSocket);
             }
             else{
-                var tempSocket = io.connect(constant.gameSocketURL,{'force new connection':true} );
+                var tempSocket = io.connect(constant.getSocketURL());
                 global.setSocket(tempSocket);
             }
         }else {
@@ -79,7 +79,7 @@ cc.Class({
                 global.setSocket(tempSocket);
             }
             else{
-                var tempSocket = io(constant.gameSocketURL);
+                var tempSocket = io(constant.getSocketURL());
                 global.setSocket(tempSocket);
             }
         }

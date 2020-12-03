@@ -1,7 +1,8 @@
 // var socketURL = "192.168.100.6:8099";
 // var socketURL = "slot-grabber.casinoville.net"
-var socketURL = "https://st-socket-dsocial.slot28.com/bet";
-export var gameSocketURL = "https://st-socket-dsocial.slot28.com/game";
+// var socketURL = "https://st-socket-dsocial.slot28.com/bet";
+// export var gameSocketURL = "https://st-socket-dsocial.slot28.com/game";
+var socketURL = "https://st-socket-dsocial.slot28.com";
 // var socketURL = "localhost:7777/bet";
 // export var gameSocketURL = "localhost:7777/game";
 // var socketURL = "192.168.100.45:8098";

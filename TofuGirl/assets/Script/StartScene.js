@@ -53,7 +53,19 @@ cc.Class({
             default:null,
             type:cc.AudioClip,
         },
+        forDemo:false,
 
+        sureExit:{
+            default:null,
+            type:cc.Node,
+        },
+    },
+
+    openExit(){
+        this.sureExit.active=true;
+    },
+    closeExit(){
+        this.sureExit.active=false;
     },
     openInsufficient(){
         this.insufficientCredit.active = true;
@@ -80,7 +92,9 @@ cc.Class({
         this.loadingLayer.active =true;
         this.api = this.node.getComponent("API");
         this.api.getSettings();
-        this.getComponent("Socket").connectSocket("bet");
+        if(!globalData.getSocket()){
+            this.getComponent("Socket").connectSocket();
+        }
         const isIOS14Device = cc.sys.os === cc.sys.OS_IOS && cc.sys.isBrowser && cc.sys.isMobile && /iPhone OS 14/.test(window.navigator.userAgent);
         if (isIOS14Device) {
             cc.MeshBuffer.prototype.checkAndSwitchBuffer = function (vertexCount) {
@@ -136,17 +150,18 @@ cc.Class({
 
 
     blankScreen(){
-        window.location.href="about:blank";
+        window.location.href=globalData.settings.lobby_url;
     },
 
 
     updateCreditLabel(){
         this.loadingLayer.active =false;
-        this.balance.string = Math.round(globalData.settings.balance * 10) / 10;
+        this.balance.string = Math.round(globalData.settings.balance * 100) / 100;
     },
     startGame(){
         if (this.inGameBetting.getComponent("InGameBetting").checkSufficientMoney()) {
             this.inGameBetting.getComponent("InGameBetting").pay();
+            this.forDemo=true;
             this.loadingLayer.active = true;
         }
         else {
@@ -155,17 +170,28 @@ cc.Class({
     },
     update (dt) {
 
-        if(this.loadingLayer.active){
-            if(globalData.finishGetData){
-                globalData.finishGetData = false;
-                globalData.getSocket().disconnect();
-                cc.director.loadScene("MainScene");
-
+        if(!globalData.isDemo){
+            if(this.loadingLayer.active){
+                if(globalData.finishGetData){
+                    globalData.finishGetData = false;
+                    // globalData.getSocket().disconnect();
+                    cc.director.loadScene("MainScene");
+    
+                }
             }
         }
+        else{
+            if(this.forDemo){
+                this.demoGenerateScore();
+                cc.director.loadScene("MainScene");
+            }
+        }
+       
 
     },
-
+    demoGenerateScore(){
+        globalData.maxPayOut = parseInt(Math.random() * (60 + 1 - 21) + 21);
+    },
     toggleMute(){
         if(this.musicToggle.isChecked){
             globalData.setSound(1);        
