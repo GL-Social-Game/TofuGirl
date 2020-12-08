@@ -48,25 +48,18 @@ cc.Class({
     spawnSpeedState() {
         if (this.currentSpawnCount <= this.state1) {
 
-            this.speed = 400*this.multiplier;
-            cc.log("STATE1");
-        }
-        else if (this.currentSpawnCount > this.state1 && this.currentSpawnCount <= this.state2) {
-
-            if(this.currentSpawnCount == parseInt(this.state1+1)){
+            this.speed = 300*this.multiplier;
+            if(this.currentSpawnCount == parseInt(this.state1)){
                 var action = cc.tintTo(2,253,228,129);
                 var action2 = cc.tintTo(2,253,228,129);
                 this.bgImage.runAction(action);
                 this.bgExtent.runAction(action2);
 
             }
-            this.speed = 500*this.multiplier;
-            cc.log("STATE2");
-            //#FDE481  253,228,129
-
+            cc.log("STATE1");
         }
-        else if (this.currentSpawnCount > this.state2 && this.currentSpawnCount <= this.state3) {
-            if(this.currentSpawnCount == parseInt(this.state2+1)){
+        else if (this.currentSpawnCount > this.state1 && this.currentSpawnCount <= this.state2) {
+            if(this.currentSpawnCount == parseInt(this.state2)){
                 var action = cc.tintTo(2,194,99,163);
                 var action2 = cc.tintTo(2,194,99,163);
                 this.bgImage.runAction(action);
@@ -74,22 +67,44 @@ cc.Class({
 
 
             }
-            this.speed = 625*this.multiplier;
-            cc.log("STATE3"); 
+          
+            this.speed = 400*this.multiplier;
+            cc.log("STATE2");
+            //#FDE481  253,228,129
 
         }
-        else if (this.currentSpawnCount > this.state3 && this.currentSpawnCount < this.main.maxPayOut-1) {
-            if(this.currentSpawnCount ==  parseInt(this.state3+1)){
+        else if (this.currentSpawnCount > this.state2 && this.currentSpawnCount <= this.state3) {
+         
+            if(this.currentSpawnCount ==  parseInt(this.state3)){
                 var action = cc.tintTo(2,240,61,97);
                 var action2 = cc.tintTo(2,240,61,97);
                 this.bgImage.runAction(action);
                 this.bgExtent.runAction(action2);
 
             }
-            this.speed = 750*this.multiplier;
+            this.speed = 500*this.multiplier;
+            cc.log("STATE3"); 
+
+        }
+        else if (this.currentSpawnCount > this.state3 && this.currentSpawnCount <=this.state4) {
+            if(this.currentSpawnCount ==  parseInt(this.state4)){
+                var action = cc.tintTo(2,112,41,18);
+                var action2 = cc.tintTo(2,112,41,18);
+                this.bgImage.runAction(action);
+                this.bgExtent.runAction(action2);
+
+            }
+            this.speed = 600*this.multiplier;
             cc.log("STATE4"); 
 
         }
+        else if (this.currentSpawnCount > this.state4 && this.currentSpawnCount < this.main.maxPayOut-1) {
+         
+            this.speed = 750*this.multiplier;
+            cc.log("STATE5"); 
+
+        }
+
         else {
             //Max payout state – three moves, guarantee lose
             this.speed = 900*this.multiplier; 
@@ -103,10 +118,11 @@ cc.Class({
         this.main = this.main.getComponent("MainGame");
     },
     generateState() {
-        this.state1 = this.main.maxPayOut  * 30 / 100; //15
-        this.state2 = this.main.maxPayOut * 60 / 100; //30
-        this.state3 = this.main.maxPayOut * 90 / 100; //45
-        this.state4 = this.main.maxPayOut;
+        this.state1 = this.main.maxPayOut  * 20 / 100; //15
+        this.state2 = this.main.maxPayOut * 40 / 100; //30
+        this.state3 = this.main.maxPayOut * 60 / 100; //45
+        this.state4 = this.main.maxPayOut* 80 / 100;
+        this.state5 = this.main.maxPayOut;
     },
 
     start () {

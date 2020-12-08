@@ -50,7 +50,7 @@ export var isEncrypt = true;
 
 export var host_id=0;
 export var access_token = 0;
-export var winMultiplier = [40,38,36,34,32];
+export var winMultiplier = [25,25,23.07692308,22.72727273,22.22222222];
 export function getMultiplier(){
     return multiplier;
 }

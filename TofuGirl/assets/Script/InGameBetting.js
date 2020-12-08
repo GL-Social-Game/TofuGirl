@@ -194,6 +194,8 @@ cc.Class({
                 "user_id": globalData.settings.user_id,
                 "scorePerOne": globalData.getMultiplier(),
                 'api_url':globalData.api_Url,
+                "currentBetSlot" :globalData.getBetAmountIndex(),
+
             };
             if(globalData.isEncrypt){
                 emit_result = btoa(JSON.stringify(emit_result));

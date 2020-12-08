@@ -183,6 +183,7 @@ cc.Class({
         else{
             if(this.forDemo){
                 this.demoGenerateScore();
+                this.forDemo=false;
                 cc.director.loadScene("MainScene");
             }
         }
