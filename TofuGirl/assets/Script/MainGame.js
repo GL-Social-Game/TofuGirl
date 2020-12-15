@@ -422,10 +422,10 @@ cc.Class({
             this.scheduleOnce(function(){
                 if(!this.lose){
                     this.currentScore++;
-                    this.animationLabel.string="+"+ Math.round((this.multiplier*90/100)*10000)/10000;
+                    this.animationLabel.string="+"+ Math.round((this.multiplier*100/100)*1000)/1000;
                     this.animationText.play("TextAnimation");
                     this.score.string = this.currentScore;
-                    this.total_add = this.currentScore *  Math.round((this.multiplier*90/100)*10000)/10000;
+                    this.total_add = this.currentScore *  Math.round((this.multiplier*100/100)*1000)/1000;
                     this.winAmountLabel.string=Math.round(this.total_add*100)/100;
                     this.resultScore.string=this.currentScore;
                     this.resultWinAmountLabel.string=Math.round(this.total_add*100)/100;
@@ -437,7 +437,14 @@ cc.Class({
     
     },
     demoGenerateScore(){
-        globalData.maxPayOut = parseInt(Math.random() * (32 + 1 - 15) + 15);
+        var generate =parseInt(Math.random() * (100 + 1) + 1);
+
+        if(generate<80){
+            globalData.maxPayOut = parseInt(Math.random() * (70 + 1 - 35) + 35);
+        }
+        else{
+            globalData.maxPayOut = parseInt(Math.random() * (25 + 1 - 15) + 15);
+        }
     },
    
     update (dt) {
@@ -487,7 +494,7 @@ cc.Class({
     calculateBetAmount(){
         this.maintBetOption = globalData.getBetSelection();
         if (this.maintBetOption == 0) {
-            this.myValue = 0.5;
+            this.myValue = 1;
         }
         if (this.maintBetOption == 1) {
             this.myValue = 5;

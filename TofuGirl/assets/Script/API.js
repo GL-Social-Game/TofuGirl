@@ -89,12 +89,12 @@ cc.Class({
 			
 			var json = JSON.stringify(body);
 			var apiURL= global.api_url;
-			if (global.api_url == undefined) {
+			if (global.api_Url == undefined) {
 				apiURL = "https://bo-stage.slot28.com";
 				if (global.isProduction) {
 					apiURL = "https://bo.slot28.com";
 				}
-				global.api_url=apiURL;
+				global.api_Url=apiURL;
 
 			}
 			let url = apiURL+"/api/user/get-settings-demo";
@@ -140,13 +140,13 @@ cc.Class({
 			}
 	
 			var json = JSON.stringify(body);
-			var apiURL = global.api_url;
-			if (global.api_url == undefined) {
+			var apiURL = global.api_Url;
+			if (global.api_Url == undefined) {
 				apiURL = "https://bo-stage.slot28.com";
 				if (global.isProduction) {
 					apiURL = "https://bo.slot28.com";
 				}
-				global.api_url=apiURL;
+				global.api_Url=apiURL;
 
 			}
 

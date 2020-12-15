@@ -191,7 +191,17 @@ cc.Class({
 
     },
     demoGenerateScore(){
-        globalData.maxPayOut = parseInt(Math.random() * (60 + 1 - 21) + 21);
+        
+        var generate =parseInt(Math.random() * (100 + 1) + 1);
+
+        if(generate<80){
+            globalData.maxPayOut = parseInt(Math.random() * (70 + 1 - 35) + 35);
+        }
+        else{
+            globalData.maxPayOut = parseInt(Math.random() * (25 + 1 - 15) + 15);
+        }
+
+
     },
     toggleMute(){
         if(this.musicToggle.isChecked){

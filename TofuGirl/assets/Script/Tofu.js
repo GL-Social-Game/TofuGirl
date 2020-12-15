@@ -63,14 +63,20 @@ cc.Class({
                     this.tofuAnimator.play("TofuHit");
                     this.rigidBody.linearVelocity=cc.v2(0,0);
                     if(this.node.x>-20 && this.node.x<20){
-                        this.main.updateScore(true,this.node);
-                        this.perfect=true;
-                        cc.systemEvent.emit("Perfect");
-                        globalData.currentValueSound++;
-                        this.main.perfectSoundFX(globalData.currentValueSound);
-                        this.scheduleOnce(function(){
-                            this.node.x =0;
-                        },0.01)
+                        // this.main.updateScore(true,this.node);
+                        // this.perfect=true;
+                        // cc.systemEvent.emit("Perfect");
+                        // globalData.currentValueSound++;
+                        // this.main.perfectSoundFX(globalData.currentValueSound);
+                        // this.scheduleOnce(function(){
+                        //     this.node.x =0;
+                        // },0.01)
+
+
+                        cc.systemEvent.emit("NotPerfect");
+                        this.main.almostMissSoundFX();
+                        globalData.currentValueSound=0;
+                        this.main.updateScore(false);
                         
                     }
                     else{
