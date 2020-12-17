@@ -90,8 +90,8 @@ cc.Class({
         }
 
         this.loadingLayer.active =true;
-        this.api = this.node.getComponent("API");
-        this.api.getSettings();
+        // this.api = this.node.getComponent("API");
+        // this.api.getSettings();
         if(!globalData.getSocket()){
             this.getComponent("Socket").connectSocket();
         }

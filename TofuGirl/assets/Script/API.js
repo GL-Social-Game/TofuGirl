@@ -54,10 +54,10 @@ cc.Class({
     getSettings(){
 		global.host_id = this.getParameterByName('host_id');
 		global.access_token = this.getParameterByName('access_token');
-
 		let xhr = new XMLHttpRequest();
 		var self = this;
 		if(global.host_id==null && global.access_token==null){
+
 			if(!global.isDemo){
 				self.errorLayer.active = true;
 				self.errorLabel.string=" You Are Playing For Fun.";
@@ -95,9 +95,9 @@ cc.Class({
 					apiURL = "https://bo.slot28.com";
 				}
 				global.api_Url=apiURL;
-
+				// alert(apiURL);
 			}
-			let url = apiURL+"/api/user/get-settings-demo";
+			let url = global.api_Url+"/api/user/get-settings-demo";
 		
 			// let url = "https://bo-stage-apl.velachip.com/api/user/get-settings?host_id=0e83088027d4c42c8e9934388480c996&access_token=demo01&game_code=21";
 			xhr.open("POST", url, true);
