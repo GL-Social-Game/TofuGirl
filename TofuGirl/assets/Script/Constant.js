@@ -2,8 +2,8 @@
 // var socketURL = "slot-grabber.casinoville.net"
 // var socketURL = "https://st-socket-dsocial.slot28.com/bet";
 // export var gameSocketURL = "https://st-socket-dsocial.slot28.com/game";
- var socketURL = "https://st-socket-dsocial.slot28.com";
-// var socketURL = "localhost:9000";
+//  var socketURL = "https://st-socket-dsocial.slot28.com";
+var socketURL = "localhost:9000";
 // export var gameSocketURL = "localhost:7777/game";
 // var socketURL = "192.168.100.45:8098";
 // var apiURL = "http://bo.fun1881.com/api/user/";
@@ -16,7 +16,6 @@ var redeemHistroyURL = "http://bo-stage.velachip.com/api/berchinko/transaction";
 var signUpURL = "http://bo-stage.velachip.com/api/user/register";
 var lobbyAPI = "http://bo-stage.velachip.com/api/user/get-info";
 var forgetPassURL = "http://bo-stage.velachip.com/api/user/forgot-password";
-var gameCode = "76";
 
 var game_version = "1.1.0";
 
@@ -52,11 +51,6 @@ export function getLoginURL(){
     return loginURL;
 }
 
-export function setGameCode(value){
-    gameCode = value;
-    return (gameCode);
-}
-
 export function setSocketURL(value){
     socketURL = value;
     return (socketURL);
@@ -77,8 +71,4 @@ export function getSocketURL(){
 
 export function getApiURL(){
     return apiURL;
-}
-
-export function getGameCode(){
-    return gameCode;
 }

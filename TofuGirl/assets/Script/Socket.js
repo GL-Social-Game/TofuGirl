@@ -144,6 +144,10 @@ cc.Class({
             global.ticket_id = data.ticket_id;
             global.settings.balance = data.balance;
             global.maxPayOut = data.maxResult;
+            if(global.game_code == 71){
+                global.MaxWinMultiplier = data.maxMultiplier;
+                cc.log("Max Win Multiplier: "+global.MaxWinMultiplier);
+            }
             global.finishGetData = true;
 
         });

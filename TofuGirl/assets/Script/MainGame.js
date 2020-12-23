@@ -368,7 +368,7 @@ cc.Class({
             var emit_result = {
                 'host_id':globalData.host_id,
                 'access_token':globalData.access_token,
-                'game_code': 24,
+                'game_code': globalData.game_code,
                 'betAmount': this.currentBetting,
                 "key": "TofuGirl bet with these index 1st",
                 "description": "bet",
