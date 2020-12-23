@@ -135,6 +135,7 @@ cc.Class({
         var tofu = cc.instantiate(this.tofuPrefab);
         let rigidBody = tofu.getComponent(cc.RigidBody);
         tofu.parent = this.spawnLayer;
+        tofu.getComponent("Tofu").multiplier = 0.5;
         if(this.main.accumulateMultiplier > globalData.MaxWinMultiplier){
             tofu.getComponent("Tofu").isBoom =true;
         }

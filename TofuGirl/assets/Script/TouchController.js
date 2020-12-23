@@ -102,7 +102,7 @@ cc.Class({
                     this.canJump = false;
                     this.scheduleOnce(function(){
                         this.autoJump();
-                    },0.4);
+                    },0.38);
                 }
             }
         }

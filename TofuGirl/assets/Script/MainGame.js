@@ -176,6 +176,7 @@ cc.Class({
     onLoad () {
         this.calculateBetAmount();
         this.accumulateMultiplier = 0;
+        this.currentWinMultiplier = 0;
         if(!globalData.getSocket()){
             this.getComponent("Socket").connectSocket();
         }
@@ -300,7 +301,7 @@ cc.Class({
                 this.resultScore.string = "Boom";
             }
             else{
-                this.resultScore.string = this.currentScore;
+                this.resultScore.string = this.currentWinMultiplier;
             }
             if(globalData.settings.balance>=this.currentBetting){
                 this.replayButton.interactable = true;
@@ -402,7 +403,7 @@ cc.Class({
         this.touchController=cc.find("Canvas/Main Camera/TouchController").getComponent("TouchController");
     },
 
-    updateScore(perfect){
+    updateScore(perfect,value){
         if(perfect){
             //perfect
             this.perfectString.string="Perfect!";
@@ -411,12 +412,13 @@ cc.Class({
             this.scheduleOnce(function(){
                 if(!this.lose){
                     this.currentScore++;
+                    this.currentWinMultiplier +=  value;
                     this.perfectText2.string="(+"+ Math.round((this.multiplier*10/100)*10000)/10000+")";
                     this.perfectAnimationLabel.string="+"+ Math.round((this.multiplier*90/100)*10000)/10000;
-                    this.perfectAnimationText.play("TextAnimation");
-                    this.total_add = this.currentBetting * this.accumulateMultiplier;
-                    this.winAmountLabel.string = Math.round(this.total_add*100)/100;
-                    this.resultScore.string = this.accumulateMultiplier;
+                    // this.perfectAnimationText.play("TextAnimation");
+                    this.total_add = this.currentBetting * this.currentWinMultiplier;
+                    this.winAmountLabel.string = this.currentWinMultiplier;
+                    this.resultScore.string = this.currentWinMultiplier;
                     this.resultWinAmountLabel.string=Math.round(this.total_add*100)/100;
                 }
             },0.2);
@@ -428,11 +430,12 @@ cc.Class({
             this.scheduleOnce(function(){
                 if(!this.lose){
                     this.currentScore++;
+                    this.currentWinMultiplier +=  value;
                     this.animationLabel.string="+"+ Math.round((this.multiplier*100/100)*1000)/1000;
-                    this.animationText.play("TextAnimation");
-                    this.total_add = this.currentBetting * this.accumulateMultiplier;
-                    this.winAmountLabel.string=Math.round(this.total_add*100)/100;
-                    this.resultScore.string = this.accumulateMultiplier;
+                    // this.animationText.play("TextAnimation");
+                    this.total_add = this.currentBetting *  this.currentWinMultiplier;
+                    this.winAmountLabel.string= this.currentWinMultiplier;
+                    this.resultScore.string =   this.currentWinMultiplier;
                     this.resultWinAmountLabel.string=Math.round(this.total_add*100)/100;
                 }
             },0.2);
@@ -451,7 +454,6 @@ cc.Class({
             globalData.maxPayOut = parseInt(Math.random() * (25 + 1 - 15) + 15);
         }
 
-        globalData.MaxWinMultiplier = 10;
     },
    
     update (dt) {

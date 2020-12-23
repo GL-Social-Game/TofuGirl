@@ -42,6 +42,7 @@ cc.Class({
     onLoad () {
         //this.generateScore();
         this.isBoom = false;
+        // this.multiplier = 0;
         var self =this;
         cc.systemEvent.on("Perfect", function() {
             self.playTofu();
@@ -81,14 +82,14 @@ cc.Class({
                             cc.systemEvent.emit("NotPerfect");
                             this.main.almostMissSoundFX();
                             globalData.currentValueSound=0;
-                            this.main.updateScore(false);
+                            this.main.updateScore(false,this.multiplier);
                             
                         }
                         else{
                             cc.systemEvent.emit("NotPerfect");
                             this.main.almostMissSoundFX();
                             globalData.currentValueSound=0;
-                            this.main.updateScore(false);
+                            this.main.updateScore(false,this.multiplier);
     
                         }
                         if(this.node.x>100){
@@ -108,9 +109,9 @@ cc.Class({
                         this.main.lose =true; 
                         this.main.currentScore = 0;
                         this.main.total_add = 0;
-                        this.main.accumulateMultiplier = 0;
+                        // this.main.accumulateMultiplier = 0;
                         this.main.loseTrigger(true);
-                        this.main.updateScore(false);
+                        this.main.updateScore(false,0);
 
                     }
                
