@@ -282,7 +282,7 @@ cc.Class({
         },0.5);
     },
 
-    loseTrigger(){
+    loseTrigger(isBoom){
         this.questionMark.active=true;
         this.playEffect(this.loseSound, globalData.getRotateVolume());
         this.sendEndResult();
@@ -295,6 +295,12 @@ cc.Class({
             }
             this.endGameScoreLabel.string = Math.round((this.total_add) * 100) / 100;
             this.endGameLayer.active = true;
+            if(isBoom){
+                this.resultScore.string = "Boom";
+            }
+            else{
+                this.resultScore.string = this.currentScore;
+            }
             if(globalData.settings.balance>=this.currentBetting){
                 this.replayButton.interactable = true;
             }
@@ -392,6 +398,7 @@ cc.Class({
 
     start () {
         this.balance.string=Math.round((globalData.settings.balance) * 100) / 100;
+        this.touchController=cc.find("Canvas/Main Camera/TouchController").getComponent("TouchController");
     },
 
     updateScore(perfect){
@@ -407,10 +414,9 @@ cc.Class({
                     this.perfectAnimationLabel.string="+"+ Math.round((this.multiplier*90/100)*10000)/10000;
                     this.perfectAnimationText.play("TextAnimation");
                     this.score.string = this.currentScore;
-                    //+10.65 (+1.2)
                     this.total_add = this.currentScore *  Math.round(this.multiplier*10000)/10000;
-                    this.winAmountLabel.string=Math.round(this.total_add*100)/100;
-                    this.resultScore.string=this.currentScore;
+                    this.winAmountLabel.string = Math.round(this.total_add*100)/100;
+                    this.resultScore.string = this.currentScore;
                     this.resultWinAmountLabel.string=Math.round(this.total_add*100)/100;
                 }
             },0.2);
@@ -427,7 +433,7 @@ cc.Class({
                     this.score.string = this.currentScore;
                     this.total_add = this.currentScore *  Math.round((this.multiplier*100/100)*1000)/1000;
                     this.winAmountLabel.string=Math.round(this.total_add*100)/100;
-                    this.resultScore.string=this.currentScore;
+                    this.resultScore.string = this.currentScore;
                     this.resultWinAmountLabel.string=Math.round(this.total_add*100)/100;
                 }
             },0.2);
@@ -445,9 +451,18 @@ cc.Class({
         else{
             globalData.maxPayOut = parseInt(Math.random() * (25 + 1 - 15) + 15);
         }
+
+        globalData.MaxWinMultiplier = 10;
     },
    
     update (dt) {
+
+        if(!this.touchController.autoJumpEnable){
+            this.girlObject.stopAllActions();
+            let rigidBody= this.girlObject.getComponent(cc.RigidBody);
+            rigidBody.type= cc.RigidBodyType.Static;
+            this.characterAnimator.pause();
+        }
 
         if(!this.lose){
             this.girlObject.x =0;
@@ -574,4 +589,7 @@ cc.Class({
         }
 
     },
+
+
+    
 });

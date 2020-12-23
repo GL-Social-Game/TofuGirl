@@ -41,6 +41,7 @@ cc.Class({
     },
     onLoad () {
         //this.generateScore();
+        this.isBoom = false;
         var self =this;
         cc.systemEvent.on("Perfect", function() {
             self.playTofu();
@@ -51,6 +52,8 @@ cc.Class({
     },
     start () {
         this.main = cc.find("Canvas").getComponent("MainGame");
+        this.touchController=cc.find("Canvas/Main Camera/TouchController").getComponent("TouchController");
+
 
     },
     onBeginContact: function (contact, selfCollider, otherCollider) {
@@ -62,43 +65,58 @@ cc.Class({
                 if(otherCollider.node.name=="TofuGirl"){
                     this.tofuAnimator.play("TofuHit");
                     this.rigidBody.linearVelocity=cc.v2(0,0);
-                    if(this.node.x>-20 && this.node.x<20){
-                        // this.main.updateScore(true,this.node);
-                        // this.perfect=true;
-                        // cc.systemEvent.emit("Perfect");
-                        // globalData.currentValueSound++;
-                        // this.main.perfectSoundFX(globalData.currentValueSound);
-                        // this.scheduleOnce(function(){
-                        //     this.node.x =0;
-                        // },0.01)
 
-
-                        cc.systemEvent.emit("NotPerfect");
-                        this.main.almostMissSoundFX();
-                        globalData.currentValueSound=0;
-                        this.main.updateScore(false);
-                        
+                    if(!this.isBoom){
+                        if(this.node.x>-20 && this.node.x<20){
+                            // this.main.updateScore(true,this.node);
+                            // this.perfect=true;
+                            // cc.systemEvent.emit("Perfect");
+                            // globalData.currentValueSound++;
+                            // this.main.perfectSoundFX(globalData.currentValueSound);
+                            // this.scheduleOnce(function(){
+                            //     this.node.x =0;
+                            // },0.01)
+    
+    
+                            cc.systemEvent.emit("NotPerfect");
+                            this.main.almostMissSoundFX();
+                            globalData.currentValueSound=0;
+                            this.main.updateScore(false);
+                            
+                        }
+                        else{
+                            cc.systemEvent.emit("NotPerfect");
+                            this.main.almostMissSoundFX();
+                            globalData.currentValueSound=0;
+                            this.main.updateScore(false);
+    
+                        }
+                        if(this.node.x>100){
+                            this.main.characterAnimator.play("Senget");
+                            this.main.almostMissSoundFX();
+                            globalData.currentValueSound=0;
+    
+                        }
+                        else if(this.node.x<-100){
+                            this.main.characterAnimator.play("Senget");
+                            this.main.almostMissSoundFX();
+                            globalData.currentValueSound=0;
+                        }
                     }
                     else{
-                        cc.systemEvent.emit("NotPerfect");
-                        this.main.almostMissSoundFX();
-                        globalData.currentValueSound=0;
+                        this.touchController.autoJumpEnable = false;
+                        this.main.lose =true; 
+                        this.main.currentScore = 0;
+                        this.main.total_add = 0;
+                        this.main.loseTrigger(true);
                         this.main.updateScore(false);
 
                     }
-                    if(this.node.x>100){
-                        this.main.characterAnimator.play("Senget");
-                        this.main.almostMissSoundFX();
-                        globalData.currentValueSound=0;
-
+               
+                    if(this.touchController.autoJumpEnable){
+                        cc.find("Canvas/Spawner").getComponent("TofuSpawner").spawn();
                     }
-                    else if(this.node.x<-100){
-                        this.main.characterAnimator.play("Senget");
-                        this.main.almostMissSoundFX();
-                        globalData.currentValueSound=0;
-                    }
-                    cc.find("Canvas/Spawner").getComponent("TofuSpawner").spawn();
-                    cc.find("Canvas").getComponent("MainGame").jumping=false;
+                    this.main.jumping=false;
                     cc.find("Canvas/Main Camera").getComponent("CameraController").moveCamera(otherCollider.node.y);
                     this.contacted=true;
                 }
@@ -118,21 +136,21 @@ cc.Class({
         }
     },
     update (dt) {
-        if(this.main.lose){
+        if(this.main.lose||!this.touchController.autoJumpEnable){
             this.rigidBody.linearVelocity=cc.v2(0,0);
         }
 
         if(!this.contacted&&!this.main.lose){
             if(!this.left){
                 if(this.node.x<-400){
-                    cc.find("Canvas").getComponent("MainGame").lose = true;
-                    cc.find("Canvas").getComponent("MainGame").loseTrigger();
+                    this.main.lose = true;
+                    this.main.loseTrigger(false);
                 }
             }
             else{
                 if(this.node.x>400){
-                    cc.find("Canvas").getComponent("MainGame").lose = true;
-                    cc.find("Canvas").getComponent("MainGame").loseTrigger();
+                    this.main.lose = true;
+                    this.main.loseTrigger(false);
                 }
             }
         }

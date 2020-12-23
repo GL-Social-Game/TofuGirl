@@ -5,6 +5,7 @@ var effect_volume = 0.2;
 var rotate_volume = 1;
 var betAmountIndex = 0;
 var multiplier = 0;
+export var MaxWinMultiplier = 10;
 var socket = null;
 export var isDemo = false;
 export var isProduction = false;

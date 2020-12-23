@@ -49,15 +49,14 @@ cc.Class({
     start () {
 
         this.canJump = true;
+        this.autoJumpEnable = true;
         this.main = cc.find("Canvas");
         this.main = this.main.getComponent("MainGame");
         this.spawner=cc.find("Canvas/Spawner").getComponent("TofuSpawner");
         var self = this;
         this.node.on(cc.Node.EventType.TOUCH_END, function (event) {
             if(!self.tapToPlay.active&&self.isStart){
-                if(!self.main.lose&&!self.main.jumping){
-                    self.main.jump();
-                }
+            
             }
             else{
                 if(self.tapToPlay.active){
@@ -81,9 +80,19 @@ cc.Class({
 
     autoJump(){
      
-        this.main.jump();
-        this.canJump = true;
+        if(this.autoJumpEnable){
+            this.main.jump();
+            this.canJump = true;
+        }
+
   
+    },
+
+    cancelJump(){
+        if(!this.tapToPlay.active && this.isStart){
+            this.autoJumpEnable = false;
+            this.main.loseTrigger(false);
+        }
     },
     update (dt) {
 

@@ -4,7 +4,7 @@
 //  - https://docs.cocos.com/creator/manual/en/scripting/reference/attributes.html
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
-
+import * as globalData from "GlobalData";
 cc.Class({
     extends: cc.Component,
 
@@ -109,6 +109,7 @@ cc.Class({
 
 
     onLoad () {
+        this.accumulateMultiplier = 0;
         this.main = this.main.getComponent("MainGame");
     },
     generateState() {
@@ -126,10 +127,17 @@ cc.Class({
 
     spawn(){
         this.spawnSpeedState();
+        this.accumulateMultiplier +=1;
         var random = parseInt(Math.random() * (1 + 1 - 0) + 0);
         var tofu = cc.instantiate(this.tofuPrefab);
         let rigidBody = tofu.getComponent(cc.RigidBody);
         tofu.parent = this.spawnLayer;
+        if(this.accumulateMultiplier > globalData.MaxWinMultiplier){
+            tofu.getComponent("Tofu").isBoom =true;
+        }
+        else{
+            tofu.getComponent("Tofu").isBoom =false;
+        }
         if(random==0){//left
             tofu.position = cc.v2(this.left.x,this.startPositionY+200);
             tofu.getComponent("Tofu").left =true;
