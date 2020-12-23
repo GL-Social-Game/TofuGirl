@@ -109,8 +109,10 @@ cc.Class({
 
 
     onLoad () {
-        this.accumulateMultiplier = 0;
         this.main = this.main.getComponent("MainGame");
+        this.main.score.string = this.main.accumulateMultiplier;
+
+      
     },
     generateState() {
         this.state1 = this.main.maxPayOut  * 20 / 100; //15
@@ -127,12 +129,13 @@ cc.Class({
 
     spawn(){
         this.spawnSpeedState();
-        this.accumulateMultiplier +=1;
+        this.main.accumulateMultiplier +=0.5;
+        this.main.score.string = this.main.accumulateMultiplier;
         var random = parseInt(Math.random() * (1 + 1 - 0) + 0);
         var tofu = cc.instantiate(this.tofuPrefab);
         let rigidBody = tofu.getComponent(cc.RigidBody);
         tofu.parent = this.spawnLayer;
-        if(this.accumulateMultiplier > globalData.MaxWinMultiplier){
+        if(this.main.accumulateMultiplier > globalData.MaxWinMultiplier){
             tofu.getComponent("Tofu").isBoom =true;
         }
         else{

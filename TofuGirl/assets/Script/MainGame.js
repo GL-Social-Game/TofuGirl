@@ -175,6 +175,7 @@ cc.Class({
 
     onLoad () {
         this.calculateBetAmount();
+        this.accumulateMultiplier = 0;
         if(!globalData.getSocket()){
             this.getComponent("Socket").connectSocket();
         }
@@ -413,10 +414,9 @@ cc.Class({
                     this.perfectText2.string="(+"+ Math.round((this.multiplier*10/100)*10000)/10000+")";
                     this.perfectAnimationLabel.string="+"+ Math.round((this.multiplier*90/100)*10000)/10000;
                     this.perfectAnimationText.play("TextAnimation");
-                    this.score.string = this.currentScore;
-                    this.total_add = this.currentScore *  Math.round(this.multiplier*10000)/10000;
+                    this.total_add = this.currentBetting * this.accumulateMultiplier;
                     this.winAmountLabel.string = Math.round(this.total_add*100)/100;
-                    this.resultScore.string = this.currentScore;
+                    this.resultScore.string = this.accumulateMultiplier;
                     this.resultWinAmountLabel.string=Math.round(this.total_add*100)/100;
                 }
             },0.2);
@@ -430,10 +430,9 @@ cc.Class({
                     this.currentScore++;
                     this.animationLabel.string="+"+ Math.round((this.multiplier*100/100)*1000)/1000;
                     this.animationText.play("TextAnimation");
-                    this.score.string = this.currentScore;
-                    this.total_add = this.currentScore *  Math.round((this.multiplier*100/100)*1000)/1000;
+                    this.total_add = this.currentBetting * this.accumulateMultiplier;
                     this.winAmountLabel.string=Math.round(this.total_add*100)/100;
-                    this.resultScore.string = this.currentScore;
+                    this.resultScore.string = this.accumulateMultiplier;
                     this.resultWinAmountLabel.string=Math.round(this.total_add*100)/100;
                 }
             },0.2);
@@ -591,5 +590,5 @@ cc.Class({
     },
 
 
-    
+
 });

@@ -238,7 +238,7 @@
       "array": [
         0,
         0,
-        527.4094709047232,
+        536.9357503463519,
         0,
         0,
         0,
@@ -5056,7 +5056,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 169.51,
+      "width": 292.5,
       "height": 110.8
     },
     "_anchorPoint": {
@@ -5068,7 +5068,7 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        -141.331,
+        -199.395,
         88.663,
         0,
         0,
@@ -5109,8 +5109,8 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_useOriginalSize": false,
-    "_string": "Score:",
-    "_N$string": "Score:",
+    "_string": "Multiplier:",
+    "_N$string": "Multiplier:",
     "_fontSize": 50,
     "_lineHeight": 80,
     "_enableWrapText": true,

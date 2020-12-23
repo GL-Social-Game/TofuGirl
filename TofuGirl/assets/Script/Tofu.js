@@ -108,6 +108,7 @@ cc.Class({
                         this.main.lose =true; 
                         this.main.currentScore = 0;
                         this.main.total_add = 0;
+                        this.main.accumulateMultiplier = 0;
                         this.main.loseTrigger(true);
                         this.main.updateScore(false);
 
