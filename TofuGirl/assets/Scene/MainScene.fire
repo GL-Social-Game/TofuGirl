@@ -235,7 +235,7 @@
       "array": [
         0,
         0,
-        527.4094709047232,
+        536.9357503463519,
         0,
         0,
         0,
@@ -6209,11 +6209,11 @@
       "__id__": 137
     },
     "currentSpawnCount": 0,
-    "speed": 300,
+    "speed": 1000,
     "main": {
       "__id__": 2
     },
-    "multiplier": 2.2,
+    "multiplier": 1,
     "lastOne": false,
     "_id": "13tM3PS/BBh60XzjXRSZIl"
   },

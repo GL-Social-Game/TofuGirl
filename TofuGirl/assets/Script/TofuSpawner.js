@@ -48,7 +48,6 @@ cc.Class({
     spawnSpeedState() {
         if (this.currentSpawnCount <= this.state1) {
 
-            this.speed = 300*this.multiplier;
             if(this.currentSpawnCount == parseInt(this.state1)){
                 var action = cc.tintTo(2,253,228,129);
                 var action2 = cc.tintTo(2,253,228,129);
@@ -68,7 +67,6 @@ cc.Class({
 
             }
           
-            this.speed = 400*this.multiplier;
             cc.log("STATE2");
             //#FDE481  253,228,129
 
@@ -82,7 +80,6 @@ cc.Class({
                 this.bgExtent.runAction(action2);
 
             }
-            this.speed = 500*this.multiplier;
             cc.log("STATE3"); 
 
         }
@@ -94,20 +91,17 @@ cc.Class({
                 this.bgExtent.runAction(action2);
 
             }
-            this.speed = 600*this.multiplier;
             cc.log("STATE4"); 
 
         }
         else if (this.currentSpawnCount > this.state4 && this.currentSpawnCount < this.main.maxPayOut-1) {
          
-            this.speed = 750*this.multiplier;
             cc.log("STATE5"); 
 
         }
 
         else {
             //Max payout state – three moves, guarantee lose
-            this.speed = 900*this.multiplier; 
             this.lastOne=true;
             cc.log("DIE");
         }

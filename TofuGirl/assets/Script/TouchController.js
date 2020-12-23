@@ -48,6 +48,7 @@ cc.Class({
 
     start () {
 
+        this.canJump = true;
         this.main = cc.find("Canvas");
         this.main = this.main.getComponent("MainGame");
         this.spawner=cc.find("Canvas/Spawner").getComponent("TofuSpawner");
@@ -78,8 +79,26 @@ cc.Class({
     
     },
 
+    autoJump(){
+     
+        this.main.jump();
+        this.canJump = true;
+  
+    },
     update (dt) {
-        
+
+        if(this.canJump){
+            if (!this.tapToPlay.active && this.isStart) {
+                if (!this.main.lose && !this.main.jumping) {
+                    this.canJump = false;
+                    this.scheduleOnce(function(){
+                        this.autoJump();
+                    },0.4);
+                }
+            }
+        }
+
+
         if(this.playAnim){
             this.countdown.active=true;
             this.countdownTimer=this.countdownTimer - dt;
