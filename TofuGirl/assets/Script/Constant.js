@@ -2,8 +2,8 @@
 // var socketURL = "slot-grabber.casinoville.net"
 // var socketURL = "https://st-socket-dsocial.slot28.com/bet";
 // export var gameSocketURL = "https://st-socket-dsocial.slot28.com/game";
-//  var socketURL = "https://st-socket-dsocial.slot28.com";
-var socketURL = "localhost:9000";
+ var socketURL = "https://st-socket-dsocial.slot28.com";
+// var socketURL = "localhost:9000";
 // export var gameSocketURL = "localhost:7777/game";
 // var socketURL = "192.168.100.45:8098";
 // var apiURL = "http://bo.fun1881.com/api/user/";

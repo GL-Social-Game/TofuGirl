@@ -16,6 +16,10 @@ cc.Class({
         //    readonly: false,    // optional, default is false
         // },
         // ...
+        tempLabel:{
+            default: null,
+            type: cc.Label,
+        },
     },
 
     // use this for initialization
@@ -32,6 +36,9 @@ cc.Class({
         //     global.setLang("en");
         //     URL.lang = "en";
         // }
+        if(this.tempLabel!=null){
+            this.tempLabel.string = "Max: "+global.MaxWinMultiplier;
+        }
     },
 
     //#region  ENCRYPTION
@@ -147,6 +154,7 @@ cc.Class({
             if(global.game_code == 71){
                 global.MaxWinMultiplier = data.maxMultiplier;
                 cc.log("Max Win Multiplier: "+global.MaxWinMultiplier);
+                // self.tempLabel.string = "Max: "+global.MaxWinMultiplier;
             }
             global.finishGetData = true;
 
