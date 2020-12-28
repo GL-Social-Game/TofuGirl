@@ -110,7 +110,7 @@ cc.Class({
 
     onLoad () {
         this.main = this.main.getComponent("MainGame");
-        this.main.score.string = this.main.accumulateMultiplier;
+        this.main.score.string = Math.round(this.main.accumulateMultiplier * 100) / 100;
 
       
     },
@@ -129,13 +129,15 @@ cc.Class({
 
     spawn(){
         this.spawnSpeedState();
-        this.main.accumulateMultiplier +=0.5;
-        this.main.score.string = this.main.accumulateMultiplier;
+        // var randomValue = Math.random() * 
+        this.main.accumulateMultiplier +=0.1;
+        this.main.score.string = Math.round(this.main.accumulateMultiplier * 100) / 100;
+
         var random = parseInt(Math.random() * (1 + 1 - 0) + 0);
         var tofu = cc.instantiate(this.tofuPrefab);
         let rigidBody = tofu.getComponent(cc.RigidBody);
         tofu.parent = this.spawnLayer;
-        tofu.getComponent("Tofu").multiplier = 0.5;
+        tofu.getComponent("Tofu").multiplier = 0.1;
         if(this.main.accumulateMultiplier > globalData.MaxWinMultiplier){
             tofu.getComponent("Tofu").isBoom =true;
         }

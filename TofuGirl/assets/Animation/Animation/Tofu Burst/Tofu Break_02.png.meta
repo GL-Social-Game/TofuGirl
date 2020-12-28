@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "f1e32d07-3f89-4c66-900d-b90b86516d59",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 372,
+  "height": 672,
+  "platformSettings": {},
+  "subMetas": {
+    "Tofu Break_02": {
+      "ver": "1.0.4",
+      "uuid": "ec90233d-e2d4-42b0-8ae8-6526e436c3aa",
+      "rawTextureUuid": "f1e32d07-3f89-4c66-900d-b90b86516d59",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -4.5,
+      "offsetY": -154.5,
+      "trimX": 10,
+      "trimY": 418,
+      "width": 343,
+      "height": 145,
+      "rawWidth": 372,
+      "rawHeight": 672,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
