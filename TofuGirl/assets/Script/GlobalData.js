@@ -5,13 +5,18 @@ var effect_volume = 0.2;
 var rotate_volume = 1;
 var betAmountIndex = 0;
 var multiplier = 0;
-export var MaxWinMultiplier = 10000;
+export var MaxWinMultiplier = 1;
 var socket = null;
 export var isDemo = false;
 export var isProduction = false;
 export var currentValueSound = -1;
 export var finishGetData= false;
 export var finishGeneratingBalance=false;
+export var tofuSpawned = 0;
+export var maxTofuAmount = 0;
+export var canStartGame = false;
+export var showResult = false;
+
 export function getSocket(){
     return socket;
 }
@@ -43,8 +48,8 @@ export var settings = {
     username: ""
 }
 export var isfullScreen =0;
-// export var game_code = 24;
-export var game_code = 71;
+export var game_code = 24;
+// export var game_code = 71;
 export var ticket_id = -1;
 
 export var errorMessage = "";

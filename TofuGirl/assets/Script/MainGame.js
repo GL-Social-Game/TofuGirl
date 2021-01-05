@@ -9,7 +9,14 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-
+        chooseTofuLayer:{
+            default:null,
+            type:cc.Node,
+        },
+        startGameButton:{
+            default:null,
+            type:cc.Button,
+        },
         loseText:{
             default:null,
             type:cc.Label,
@@ -169,14 +176,43 @@ cc.Class({
             default:null,
             type:cc.Label
         },
+
+        stopOnce:false,
+        stopButton:{
+            default:null,
+            type:cc.Node,
+        },
+
+        dropSprite:{
+            default:null,
+            type:cc.SpriteFrame,
+        },
+
+        countIndicator:{
+            default:[],
+            type:[cc.Node],
+        },
+        countIndicatorLabel:{
+            default:[],
+            type:[cc.Label],
+        },
     },
 
     // LIFE-CYCLE CALLBACKS:
 
     onLoad () {
+        for(let i = 0; i < this.countIndicator.length; i++){
+            this.countIndicator[i].y = 10000;
+            this.countIndicatorLabel[i].string = "0";
+        }
+        globalData.tofuSpawned = 0;
+        globalData.showResult = false;
+        this.startGameButton.interactable = false;
+        // globalData.canStartGame = false;
+        globalData.maxTofuAmount = 0;
         this.calculateBetAmount();
-        this.accumulateMultiplier = 1;
-        this.currentWinMultiplier = 1;
+        this.accumulateMultiplier = 0;
+        this.currentWinMultiplier = 0;
         if(!globalData.getSocket()){
             this.getComponent("Socket").connectSocket();
         }
@@ -187,7 +223,7 @@ cc.Class({
         if (globalData.getSound() == 0) {
             this.musicToggle.isChecked = false; 
         }
-        cc.log(this.maxPayOut);
+        // cc.log(this.maxPayOut);
         const isIOS14Device = cc.sys.os === cc.sys.OS_IOS && cc.sys.isBrowser && cc.sys.isMobile && /iPhone OS 14/.test(window.navigator.userAgent);
         if (isIOS14Device) {
             cc.MeshBuffer.prototype.checkAndSwitchBuffer = function (vertexCount) {
@@ -209,6 +245,25 @@ cc.Class({
 
     },
 
+    //#region BET TOFU AMOUNT
+    setMaxTofuAmount(event, value){
+        globalData.maxTofuAmount = value;
+        this.startGameButton.interactable = true;
+    },
+    setMaxTofuAmountManual(event){
+        if (value > 0 && value <= 105) {
+            globalData.maxTofuAmount = value;
+            cc.log(globalData.maxTofuAmount);
+            this.startGameButton.interactable = true;
+
+        }        
+    },
+    startGame(){
+        //globalData.canStartGame = true;
+        this.chooseTofuLayer.active = false;
+    },
+    //#endregion
+    
     //#region  particle
     playParticle(x, y) {
         if (this.particle != null)
@@ -243,7 +298,12 @@ cc.Class({
     },
     jump(){
         this.jumping=true;
-        this.characterAnimator.play("Jumping");
+        if(globalData.tofuSpawned % 3 == 0){
+            this.characterAnimator.play("Terbalik Jump");
+        }
+        else{
+            this.characterAnimator.play("Jumping");
+        }
         this.playEffect(this.jumpSound, globalData.getRotateVolume());
         let rigidBody= this.girlObject.getComponent(cc.RigidBody);
         let jumpAction = cc.jumpTo(0.4,cc.v2(this.girlObject.x,this.girlObject.y+this.jumpHeight),200,1);
@@ -252,6 +312,7 @@ cc.Class({
         //  collider.active=false;
          this.scheduleOnce(function(){
             this.girlObject.stopAllActions();
+            // cc.log("stop 1");
             rigidBody.gravityScale=30;
         },0.35);
       
@@ -259,6 +320,7 @@ cc.Class({
 
     jumpLeft(){
         this.girlObject.stopAllActions();
+        // cc.log("stop 2");
         this.characterAnimator.play("JumpLeft");
         this.playEffect(this.loseSound, globalData.getEffectVolume());
         let jumpAction = cc.jumpTo(0.2,cc.v2(this.girlObject.x-350,this.girlObject.y+50),40,1);
@@ -301,7 +363,7 @@ cc.Class({
                 this.resultScore.string = "Boom";
             }
             else{
-                this.resultScore.string = this.currentWinMultiplier;
+                this.resultScore.string = Math.round(this.currentWinMultiplier*100)/100;
             }
             if(globalData.settings.balance>=this.currentBetting){
                 this.replayButton.interactable = true;
@@ -310,6 +372,7 @@ cc.Class({
     },
     jumpRight(){
         this.girlObject.stopAllActions();
+        // cc.log("stop 3");
         this.characterAnimator.play("JumpRight");
         this.playEffect(this.loseSound, globalData.getRotateVolume());
         let jumpAction = cc.jumpTo(0.2,cc.v2(this.girlObject.x+350,this.girlObject.y+50),40,1);
@@ -388,7 +451,7 @@ cc.Class({
         this.loadingLayer.opacity = 255;
         this.loadingLayer.active = true;
         this.isRestarting = true;
-    
+        globalData.tofuSpawned = 0;
     },
 
     
@@ -411,15 +474,17 @@ cc.Class({
             this.playParticlePerfect(this.girlObject.x,this.girlObject.y);
             this.scheduleOnce(function(){
                 if(!this.lose){
-                    this.currentScore++;
-                    this.currentWinMultiplier +=  value;
-                    this.perfectText2.string="(+"+ Math.round((this.multiplier*10/100)*10000)/10000+")";
-                    this.perfectAnimationLabel.string="+"+ Math.round((this.multiplier*90/100)*10000)/10000;
-                    // this.perfectAnimationText.play("TextAnimation");
-                    this.total_add = this.currentBetting * this.currentWinMultiplier;
-                    this.winAmountLabel.string = Math.round(this.currentWinMultiplier*100)/100;
-                    this.resultScore.string = this.currentWinMultiplier;
-                    this.resultWinAmountLabel.string=Math.round(this.total_add*100)/100;
+                    if (!globalData.showResult) {
+                        this.currentScore++;
+                        this.currentWinMultiplier += value;
+                        this.perfectText2.string="(+"+ Math.round((this.multiplier*10/100)*10000)/10000+")";
+                        this.perfectAnimationLabel.string="+"+ Math.round((this.multiplier*90/100)*10000)/10000;
+                        // this.perfectAnimationText.play("TextAnimation");
+                        this.total_add = this.currentBetting * this.currentWinMultiplier;
+                        this.winAmountLabel.string = Math.round(this.currentWinMultiplier*100)/100;
+                        this.resultScore.string = this.currentWinMultiplier;
+                        this.resultWinAmountLabel.string=Math.round(this.total_add*100)/100;
+                    }
                 }
             },0.2);
            
@@ -429,14 +494,16 @@ cc.Class({
             this.playParticle(this.girlObject.x,this.girlObject.y-120);
             this.scheduleOnce(function(){
                 if(!this.lose){
-                    this.currentScore++;
-                    this.currentWinMultiplier +=  value;
-                    this.animationLabel.string="+"+ Math.round((this.multiplier*100/100)*1000)/1000;
-                    // this.animationText.play("TextAnimation");
-                    this.total_add = this.currentBetting *  this.currentWinMultiplier;
-                    this.winAmountLabel.string= Math.round(this.currentWinMultiplier*100)/100;
-                    this.resultScore.string =   this.currentWinMultiplier;
-                    this.resultWinAmountLabel.string=Math.round(this.total_add*100)/100;
+                    if (!globalData.showResult) {
+                        this.currentScore++;
+                        this.currentWinMultiplier += value;
+                        this.animationLabel.string="+"+ Math.round((this.multiplier*100/100)*1000)/1000;
+                        // this.animationText.play("TextAnimation");
+                        this.total_add = this.currentBetting *  this.currentWinMultiplier;
+                        this.winAmountLabel.string= Math.round(this.currentWinMultiplier*100)/100;
+                        this.resultScore.string =   this.currentWinMultiplier;
+                        this.resultWinAmountLabel.string=Math.round(this.total_add*100)/100;
+                    }
                 }
             },0.2);
         }
@@ -458,11 +525,15 @@ cc.Class({
    
     update (dt) {
 
-        if(!this.touchController.autoJumpEnable){
-            this.girlObject.stopAllActions();
-            let rigidBody= this.girlObject.getComponent(cc.RigidBody);
-            rigidBody.type= cc.RigidBodyType.Static;
-            this.characterAnimator.pause();
+        if (!this.touchController.autoJumpEnable) {
+            if (!this.stopOnce) {
+                this.stopOnce = true;
+                this.girlObject.stopAllActions();
+                // cc.log("stop 4");
+                let rigidBody = this.girlObject.getComponent(cc.RigidBody);
+                rigidBody.type = cc.RigidBodyType.Static;
+                this.characterAnimator.pause();
+            }
         }
 
         if(!this.lose){

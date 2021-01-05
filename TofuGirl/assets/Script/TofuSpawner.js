@@ -55,7 +55,7 @@ cc.Class({
                 this.bgExtent.runAction(action2);
 
             }
-            cc.log("STATE1");
+            // cc.log("STATE1");
         }
         else if (this.currentSpawnCount > this.state1 && this.currentSpawnCount <= this.state2) {
             if(this.currentSpawnCount == parseInt(this.state2)){
@@ -67,7 +67,7 @@ cc.Class({
 
             }
           
-            cc.log("STATE2");
+            // cc.log("STATE2");
             //#FDE481  253,228,129
 
         }
@@ -80,7 +80,7 @@ cc.Class({
                 this.bgExtent.runAction(action2);
 
             }
-            cc.log("STATE3"); 
+            // cc.log("STATE3"); 
 
         }
         else if (this.currentSpawnCount > this.state3 && this.currentSpawnCount <=this.state4) {
@@ -91,19 +91,19 @@ cc.Class({
                 this.bgExtent.runAction(action2);
 
             }
-            cc.log("STATE4"); 
+            // cc.log("STATE4"); 
 
         }
         else if (this.currentSpawnCount > this.state4 && this.currentSpawnCount < this.main.maxPayOut-1) {
          
-            cc.log("STATE5"); 
+            // cc.log("STATE5"); 
 
         }
 
         else {
             //Max payout state – three moves, guarantee lose
             this.lastOne=true;
-            cc.log("DIE");
+            // cc.log("DIE");
         }
     },
 
@@ -127,34 +127,74 @@ cc.Class({
         
     },
 
-    spawn(){
+    spawn() {
+        
+        cc.log(globalData.tofuSpawned + " || " + globalData.maxTofuAmount);
+        globalData.tofuSpawned++;
         this.spawnSpeedState();
-        // var randomValue = Math.random() * 
-        this.main.accumulateMultiplier +=0.1;
+        // TODO: assign currentMultiplier based on checkpoint 
+        var currentMultiplier;
+        if(globalData.tofuSpawned <= 20){
+            currentMultiplier = 0.1;
+        }
+        else if(globalData.tofuSpawned <= 30){
+            currentMultiplier = 0.2;
+        }
+        else if(globalData.tofuSpawned <= 40){
+            currentMultiplier = 0.3;
+        }
+        else if(globalData.tofuSpawned <= 60){
+            currentMultiplier = 0.4;
+        }
+        else if(globalData.tofuSpawned <= 70){
+            currentMultiplier = 0.5;
+        }
+        else if(globalData.tofuSpawned <= 80){
+            currentMultiplier = 1;
+        }
+        else if(globalData.tofuSpawned <= 90){
+            currentMultiplier = 2;
+        }
+        else if(globalData.tofuSpawned <= 100){
+            currentMultiplier = 3;
+        }
+        else{
+            currentMultiplier = 4;
+        }
+        // if (!globalData.showResult) {
+        this.main.accumulateMultiplier += currentMultiplier;
         this.main.score.string = Math.round(this.main.accumulateMultiplier * 100) / 100;
-
+        // }
         var random = parseInt(Math.random() * (1 + 1 - 0) + 0);
         var tofu = cc.instantiate(this.tofuPrefab);
         let rigidBody = tofu.getComponent(cc.RigidBody);
         tofu.parent = this.spawnLayer;
-        tofu.getComponent("Tofu").multiplier = 0.1;
-        if(this.main.accumulateMultiplier > globalData.MaxWinMultiplier){
-            tofu.getComponent("Tofu").isBoom =true;
+        tofu.getComponent("Tofu").multiplier = currentMultiplier;
+        if(globalData.tofuSpawned % 5 == 0){
+            tofu.getComponent("Tofu").enableCountIndicator();
         }
-        else{
-            tofu.getComponent("Tofu").isBoom =false;
+        if (globalData.tofuSpawned >= globalData.maxTofuAmount) {
+            tofu.getComponent("Tofu").finalTofu = true;
         }
-        if(random==0){//left
-            tofu.position = cc.v2(this.left.x,this.startPositionY+200);
-            tofu.getComponent("Tofu").left =true;
-            rigidBody.linearVelocity=cc.v2(this.speed,0);
+        if (this.main.accumulateMultiplier > globalData.MaxWinMultiplier) {
+            tofu.getComponent("Tofu").isBoom = true;
         }
-        else{//right
-            tofu.position = cc.v2(this.right.x,this.startPositionY+200);
-            tofu.getComponent("Tofu").left =false;
-            rigidBody.linearVelocity=cc.v2(- this.speed,0);
+        else {
+            tofu.getComponent("Tofu").isBoom = false;
+        }
+        if (random == 0) {//left
+            tofu.position = cc.v2(this.left.x, this.startPositionY + 200);
+            tofu.getComponent("Tofu").left = true;
+            rigidBody.linearVelocity = cc.v2(this.speed, 0);
+        }
+        else {//right
+            tofu.position = cc.v2(this.right.x, this.startPositionY + 200);
+            tofu.getComponent("Tofu").left = false;
+            rigidBody.linearVelocity = cc.v2(- this.speed, 0);
         }
         this.currentSpawnCount++;
-        this.startPositionY =this.startPositionY+200;
+        this.startPositionY = this.startPositionY + 200;
+
+        
     }
 });

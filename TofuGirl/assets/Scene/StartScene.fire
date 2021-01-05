@@ -12164,8 +12164,8 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_useOriginalSize": false,
-    "_string": "V0.2.2",
-    "_N$string": "V0.2.2",
+    "_string": "V0.2.3",
+    "_N$string": "V0.2.3",
     "_fontSize": 40,
     "_lineHeight": 40,
     "_enableWrapText": true,
@@ -14776,7 +14776,7 @@
       "__id__": 2
     },
     "_children": [],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 332

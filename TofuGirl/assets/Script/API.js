@@ -82,7 +82,7 @@ cc.Class({
 
 			var body = {
 				"device_type": "Desktop",
-				"game_code": 24,
+				"game_code": global.game_code,
 				"country_code": "MY"
 			}
 	
@@ -135,7 +135,7 @@ cc.Class({
 				"host_id": this.getParameterByName('host_id'), 
 				"access_token": this.getParameterByName('access_token'),
 				"device_type": "Desktop",
-				"game_code": 24,
+				"game_code": global.game_code,
 				"country_code": "MY"
 			}
 	
@@ -150,7 +150,7 @@ cc.Class({
 
 			}
 
-			let url = apiURL + "/api/user/get-settings?host_id="+global.host_id+"&access_token="+global.access_token+"&game_code=24";
+			let url = apiURL + "/api/user/get-settings?host_id="+global.host_id+"&access_token="+global.access_token+"&game_code="+global.game_code;
 			// let url = "https://bo-stage.slot28.com/api/user/get-settings?host_id="+global.host_id+"&access_token="+global.access_token+"&game_code=24";
 	
 			// let url = "https://bo-stage-apl.velachip.com/api/user/get-settings?host_id=0e83088027d4c42c8e9934388480c996&access_token=demo01&game_code=21";

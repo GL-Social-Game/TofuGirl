@@ -1,6 +1,6 @@
 {
   "ver": "2.3.5",
-  "uuid": "c6d6617e-93ee-4a9b-b214-c1a261726daa",
+  "uuid": "c44541d6-35b5-4eab-8c58-d9e655cd1f91",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
@@ -11,11 +11,11 @@
   "height": 672,
   "platformSettings": {},
   "subMetas": {
-    "Terbalik Jump_007": {
+    "TofuCrack": {
       "ver": "1.0.4",
-      "uuid": "81fe580c-d811-4170-84dc-f6734c56296a",
-      "rawTextureUuid": "c6d6617e-93ee-4a9b-b214-c1a261726daa",
-      "trimType": "none",
+      "uuid": "6663048c-0497-4bf5-a4cb-dd23021d495e",
+      "rawTextureUuid": "c44541d6-35b5-4eab-8c58-d9e655cd1f91",
+      "trimType": "custom",
       "trimThreshold": 1,
       "rotated": false,
       "offsetX": 0,

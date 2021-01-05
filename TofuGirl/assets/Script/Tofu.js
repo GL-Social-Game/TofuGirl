@@ -40,6 +40,19 @@ cc.Class({
             default:null,
             type:cc.Node,
         },
+        tofuCrackSprite:{
+            default:null,
+            type:cc.SpriteFrame,
+        },
+
+        countIndicator:{
+            default:null,
+            type:cc.Node,
+        },
+        countIndicatorLabel:{
+            default:[],
+            type:[cc.Label],
+        },
 
         perfect: false,
         left: true,
@@ -56,6 +69,7 @@ cc.Class({
     onLoad() {
         //this.generateScore();
         this.isBoom = false;
+        this.finalTofu = false;
         // this.multiplier = 0;
         var self = this;
         cc.systemEvent.on("Perfect", function () {
@@ -82,6 +96,30 @@ cc.Class({
                     this.rigidBody.linearVelocity = cc.v2(0, 0);
 
                     if (!this.isBoom) {
+                        if(globalData.tofuSpawned == 1){
+                            this.main.stopButton.active = true;
+                        }
+                        // for(let i = 0; i < this.main.countIndicator.length; i++){
+                        //     if (globalData.tofuSpawned == 1) {
+                        //         this.main.countIndicator[i].y = this.main.girlObject.y - 1407;
+                        //         // cc.log("1 here");
+                        //     }
+                        //     else {
+                        //         // cc.log("girl" + this.main.girlObject.y);
+                        //         this.main.countIndicator[i].y += 200;
+                        //         // cc.log("more than 1 here");
+                        //     }
+                        //     this.main.countIndicatorLabel[i].string = globalData.tofuSpawned;
+                        // }
+                        var crackChance = Math.random();
+                        var canCrack = crackChance >= 0.8;
+                        if(canCrack){
+                            // cc.log("can crack");
+                            this.scheduleOnce(function(){
+                                // cc.log("cracked");
+                                this.tofuSpriteNode.getComponent(cc.Sprite).spriteFrame = this.tofuCrackSprite;
+                            },0.5);
+                        }
                         if (this.node.x > -20 && this.node.x < 20) {
                             // this.main.updateScore(true,this.node);
                             // this.perfect=true;
@@ -117,6 +155,25 @@ cc.Class({
                             this.main.almostMissSoundFX();
                             globalData.currentValueSound = 0;
                         }
+
+                        // Check final tofu then end game
+                        if (this.finalTofu) {
+                            // if (globalData.tofuSpawned > globalData.maxTofuAmount) {
+                            if (!globalData.showResult) {
+                                if (this.finalTofu == globalData.maxTofuAmount) {
+                                    this.touchController.cancelJump();
+                                    globalData.showResult = true;
+                                    // this.scheduleOnce(function () {
+                                    // }, 0.21);
+                                }
+                                else {
+                                    this.scheduleOnce(function () {
+                                        globalData.showResult = true;
+                                        this.main.loseTrigger(false);
+                                    }, 0.21);
+                                }
+                            }
+                        }
                     }
                     else {
                         this.breakTofu();
@@ -125,29 +182,52 @@ cc.Class({
                         this.main.currentScore = 0;
                         this.main.total_add = 0;
                         // this.main.accumulateMultiplier = 0;
-                        this.main.loseTrigger(true);
                         this.main.updateScore(false, 0);
+                        if(!globalData.showResult){
+                            globalData.showResult = true;
+                            this.main.loseTrigger(true);
+                        }
 
                     }
 
                     if (this.touchController.autoJumpEnable) {
-                        cc.find("Canvas/Spawner").getComponent("TofuSpawner").spawn();
+                        // if(globalData.tofuSpawned <globalData.MaxWinMultiplier){
+                        if (this.main.accumulateMultiplier < globalData.MaxWinMultiplier) {
+                            cc.find("Canvas/Spawner").getComponent("TofuSpawner").spawn();
+                        }
                     }
                     this.main.jumping = false;
                     cc.find("Canvas/Main Camera").getComponent("CameraController").moveCamera(otherCollider.node.y);
                     this.contacted = true;
                 }
             }
+
+            
         }
 
 
 
     },
 
+    enableCountIndicator(){
+        this.countIndicator.active = true;
+        for( let i = 0; i < this.countIndicatorLabel.length; i ++){
+            this.countIndicatorLabel[i].string = globalData.tofuSpawned;
+        }
+    },
     breakTofu(){
         // this.tofuBreakNode.active = true;
         this.tofuSpriteNode.active = false;
         this.breakAnimator.play("TofuBreak");
+        let charSprite = cc.find("Canvas/TofuGirl/CharacterSprite");
+        // charSprite = this.main.dropSprite;
+        // cc.log(charSprite);
+        this.scheduleOnce(function(){
+            let drop = cc.jumpTo(0.8,cc.v2(this.main.girlObject.x,this.main.girlObject.y-1200),0,0);
+            let spin = new cc.RotateBy(0.8, 1080);
+            this.main.girlObject.runAction(drop);
+            this.main.girlObject.runAction(spin);
+        },0.1);
     },
     resetTofu() {
         this.perfect = false;
@@ -166,13 +246,19 @@ cc.Class({
             if (!this.left) {
                 if (this.node.x < -400) {
                     this.main.lose = true;
-                    this.main.loseTrigger(false);
+                    if(!globalData.showResult){
+                        globalData.showResult = true;
+                        this.main.loseTrigger(false);
+                    }
                 }
             }
             else {
                 if (this.node.x > 400) {
                     this.main.lose = true;
-                    this.main.loseTrigger(false);
+                    if(!globalData.showResult){
+                        globalData.showResult = true;
+                        this.main.loseTrigger(false);
+                    }
                 }
             }
         }

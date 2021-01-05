@@ -4,7 +4,7 @@
 //  - https://docs.cocos.com/creator/manual/en/scripting/reference/attributes.html
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
-
+import * as globalData from "GlobalData";
 cc.Class({
     extends: cc.Component,
 
@@ -91,7 +91,10 @@ cc.Class({
     cancelJump(){
         if(!this.tapToPlay.active && this.isStart){
             this.autoJumpEnable = false;
-            this.main.loseTrigger(false);
+            if(!globalData.showResult){
+                globalData.showResult = true;
+                this.main.loseTrigger(false);
+            }
         }
     },
     update (dt) {
