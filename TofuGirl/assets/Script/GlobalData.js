@@ -48,8 +48,8 @@ export var settings = {
     username: ""
 }
 export var isfullScreen =0;
-export var game_code = 24;
-// export var game_code = 71;
+// export var game_code = 24;
+export var game_code = 71;
 export var ticket_id = -1;
 
 export var errorMessage = "";

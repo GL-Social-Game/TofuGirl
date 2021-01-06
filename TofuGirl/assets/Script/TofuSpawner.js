@@ -134,32 +134,50 @@ cc.Class({
         this.spawnSpeedState();
         // TODO: assign currentMultiplier based on checkpoint 
         var currentMultiplier;
-        if(globalData.tofuSpawned <= 20){
+        if(globalData.tofuSpawned <= 5){
             currentMultiplier = 0.1;
         }
-        else if(globalData.tofuSpawned <= 30){
+        else if(globalData.tofuSpawned <= 10){
             currentMultiplier = 0.2;
         }
-        else if(globalData.tofuSpawned <= 40){
+        else if(globalData.tofuSpawned <= 15){
             currentMultiplier = 0.3;
         }
-        else if(globalData.tofuSpawned <= 60){
+        else if(globalData.tofuSpawned <= 20){
             currentMultiplier = 0.4;
         }
-        else if(globalData.tofuSpawned <= 70){
+        else if(globalData.tofuSpawned <= 24){
             currentMultiplier = 0.5;
         }
-        else if(globalData.tofuSpawned <= 80){
+        else if(globalData.tofuSpawned <= 26){
+            currentMultiplier = 0.6;
+        }
+        else if(globalData.tofuSpawned <= 28){
+            currentMultiplier = 0.7;
+        }
+        else if(globalData.tofuSpawned <= 30){
+            currentMultiplier = 0.8;
+        }
+        else if(globalData.tofuSpawned <= 32){
+            currentMultiplier = 0.9;
+        }
+        else if(globalData.tofuSpawned <= 36){
             currentMultiplier = 1;
         }
-        else if(globalData.tofuSpawned <= 90){
+        else if(globalData.tofuSpawned <= 40){
+            currentMultiplier = 1.5;
+        }
+        else if(globalData.tofuSpawned <= 48){
             currentMultiplier = 2;
         }
-        else if(globalData.tofuSpawned <= 100){
+        else if(globalData.tofuSpawned <= 53){
             currentMultiplier = 3;
         }
-        else{
+        else if(globalData.tofuSpawned <= 58){
             currentMultiplier = 4;
+        }
+        else{
+            currentMultiplier = 5;
         }
         // if (!globalData.showResult) {
         this.main.accumulateMultiplier += currentMultiplier;
