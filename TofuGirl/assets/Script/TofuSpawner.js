@@ -134,46 +134,46 @@ cc.Class({
         this.spawnSpeedState();
         // TODO: assign currentMultiplier based on checkpoint 
         var currentMultiplier;
-        if(globalData.tofuSpawned <= 5){
+        if(globalData.tofuSpawned <= 15){
             currentMultiplier = 0.1;
         }
-        else if(globalData.tofuSpawned <= 10){
+        else if(globalData.tofuSpawned <= 20){
             currentMultiplier = 0.2;
         }
-        else if(globalData.tofuSpawned <= 15){
+        else if(globalData.tofuSpawned <= 25){
             currentMultiplier = 0.3;
         }
-        else if(globalData.tofuSpawned <= 20){
+        else if(globalData.tofuSpawned <= 30){
             currentMultiplier = 0.4;
         }
-        else if(globalData.tofuSpawned <= 24){
+        else if(globalData.tofuSpawned <= 34){
             currentMultiplier = 0.5;
         }
-        else if(globalData.tofuSpawned <= 26){
+        else if(globalData.tofuSpawned <= 36){
             currentMultiplier = 0.6;
         }
-        else if(globalData.tofuSpawned <= 28){
+        else if(globalData.tofuSpawned <= 38){
             currentMultiplier = 0.7;
         }
-        else if(globalData.tofuSpawned <= 30){
+        else if(globalData.tofuSpawned <= 40){
             currentMultiplier = 0.8;
         }
-        else if(globalData.tofuSpawned <= 32){
+        else if(globalData.tofuSpawned <= 42){
             currentMultiplier = 0.9;
         }
-        else if(globalData.tofuSpawned <= 36){
+        else if(globalData.tofuSpawned <= 46){
             currentMultiplier = 1;
         }
-        else if(globalData.tofuSpawned <= 40){
+        else if(globalData.tofuSpawned <= 50){
             currentMultiplier = 1.5;
         }
-        else if(globalData.tofuSpawned <= 48){
+        else if(globalData.tofuSpawned <= 58){
             currentMultiplier = 2;
         }
-        else if(globalData.tofuSpawned <= 53){
+        else if(globalData.tofuSpawned <= 63){
             currentMultiplier = 3;
         }
-        else if(globalData.tofuSpawned <= 58){
+        else if(globalData.tofuSpawned <= 68){
             currentMultiplier = 4;
         }
         else{
