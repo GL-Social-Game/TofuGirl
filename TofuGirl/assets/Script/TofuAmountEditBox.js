@@ -11,7 +11,7 @@ cc.Class({
 
         // this.editbox.node.on('editing-did-began', this.startEdit, this);
         this.editbox.node.on('editing-did-ended', this.editEnd, this);
-        //this.editbox.node.on('text-changed', this.changeText, this);
+        this.editbox.node.on('text-changed', this.changeText, this);
         this.editbox.node.on('editing-return', this.returnEdit, this);
 
     },
@@ -40,7 +40,11 @@ cc.Class({
 
     changeText: function (editbox) {
         // The parameter of the callback is the editbox component.
+        var value = parseInt(editbox.string);
         cc.log(editbox.string);
+        if(value > 99){
+            editbox.string = 99;
+        }
         // do whatever you want with the editbox.
     },
 

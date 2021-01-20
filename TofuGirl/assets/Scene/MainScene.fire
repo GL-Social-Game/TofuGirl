@@ -541,6 +541,9 @@
       "__id__": 14
     },
     "countdownTimer": 4,
+    "stopSound": {
+      "__uuid__": "6067ae25-a725-4a9b-9b71-7d8e14f24ec8"
+    },
     "_id": "47EOQZ1qtPzKwvqZCoLlO7"
   },
   {
@@ -5460,8 +5463,8 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_useOriginalSize": false,
-    "_string": "V0.2.4",
-    "_N$string": "V0.2.4",
+    "_string": "V0.2.5",
+    "_N$string": "V0.2.5",
     "_fontSize": 40,
     "_lineHeight": 40,
     "_enableWrapText": true,
@@ -5486,7 +5489,7 @@
       "__id__": 120
     },
     "_children": [],
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 124
@@ -6143,7 +6146,7 @@
     },
     "component": "",
     "_componentId": "18dc1IgocRKmYfIqnmQhSLD",
-    "handler": "cancelJump",
+    "handler": "stopJump",
     "customEventData": ""
   },
   {
@@ -6533,8 +6536,8 @@
       "ctor": "Float64Array",
       "array": [
         0,
-        1148.668,
-        358.53452,
+        10000,
+        0,
         0,
         0,
         0,
@@ -8394,8 +8397,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 1080,
-      "height": 3000
+      "width": 5200,
+      "height": 8000
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",

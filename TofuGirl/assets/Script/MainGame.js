@@ -370,6 +370,30 @@ cc.Class({
             }
         },0.5);
     },
+    loseTriggerInstant(isBoom){
+        this.questionMark.active=true;
+        this.playEffect(this.loseSound, globalData.getRotateVolume());
+        this.sendEndResult();
+        this.scheduleOnce(function(){
+            if(this.total_add>0){
+                this.loseText.string="Congratulations!";
+            }
+            else{
+                this.loseText.string="Thank You For Playing!";
+            }
+            this.endGameScoreLabel.string = Math.round((this.total_add) * 100) / 100;
+            this.endGameLayer.active = true;
+            if(isBoom){
+                this.resultScore.string = "Boom";
+            }
+            else{
+                this.resultScore.string = Math.round(this.currentWinMultiplier*100)/100;
+            }
+            if(globalData.settings.balance>=this.currentBetting){
+                this.replayButton.interactable = true;
+            }
+        },0);
+    },
     jumpRight(){
         this.girlObject.stopAllActions();
         // cc.log("stop 3");
