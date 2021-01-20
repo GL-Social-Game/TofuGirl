@@ -170,7 +170,6 @@ cc.Class({
                                     this.scheduleOnce(function () {
                                         globalData.showResult = true;
                                         this.main.loseTrigger(false);
-                                        cc.log("end 1");
                                     }, 0.21);
                                 }
                             }
@@ -187,8 +186,6 @@ cc.Class({
                         if(!globalData.showResult){
                             globalData.showResult = true;
                             this.main.loseTrigger(true);
-                            cc.log("end 2");
-
                         }
 
                     }
@@ -252,7 +249,6 @@ cc.Class({
                     if(!globalData.showResult){
                         globalData.showResult = true;
                         this.main.loseTrigger(false);
-                        cc.log("end 3");
                     }
                 }
             }
@@ -262,7 +258,6 @@ cc.Class({
                     if(!globalData.showResult){
                         globalData.showResult = true;
                         this.main.loseTrigger(false);
-                        cc.log("end 4");
                     }
                 }
             }

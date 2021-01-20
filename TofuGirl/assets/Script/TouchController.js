@@ -40,11 +40,6 @@ cc.Class({
             type:cc.Label,  
         },
         countdownTimer:4,
-
-        stopSound:{
-            default:null,
-            type:cc.AudioClip,
-        },
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -99,24 +94,9 @@ cc.Class({
             if(!globalData.showResult){
                 globalData.showResult = true;
                 this.main.loseTrigger(false);
-                cc.log("end 5");
             }
         }
     },
-
-    // will continue to jump
-    stopJump(){
-        if(!this.tapToPlay.active && this.isStart){
-            // this.autoJumpEnable = false;
-            if(!globalData.showResult){
-                globalData.showResult = true;
-                this.main.loseTriggerInstant(false);
-                cc.log("end 6");
-                this.main.playEffect(this.stopSound, globalData.getRotateVolume());
-            }
-        }
-    },
-
     update (dt) {
 
         if(this.canJump){

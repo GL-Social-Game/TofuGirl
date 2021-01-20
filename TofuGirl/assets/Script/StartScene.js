@@ -150,11 +150,7 @@ cc.Class({
 
 
     blankScreen(){
-        if (globalData.settings.lobby_url != null && globalData.settings.lobby_url != "") {
-            window.open(globalData.settings.lobby_url, "_self");
-        } else {
-            window.open("about:blank", "_self");
-        }
+        window.location.href=globalData.settings.lobby_url;
     },
 
 

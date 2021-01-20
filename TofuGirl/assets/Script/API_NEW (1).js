@@ -22,10 +22,6 @@ cc.Class({
                 // cc.log(global.SetGeoip_Url(networkConfigJson.geoip_url));
                 // cc.log(global.SetApi_Url(networkConfigJson.api_url));
             }
-            else{
-                global.geoIP_URL = "https://bo-stage.slot28.com";
-                global.api_Url ="//geoip.slot28.com/api/";
-            }
         }
         this.api = this.node.getComponent("API");
         this.api.getSettings();
