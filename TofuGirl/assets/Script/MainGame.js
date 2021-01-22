@@ -174,6 +174,14 @@ cc.Class({
     // LIFE-CYCLE CALLBACKS:
 
     onLoad () {
+        if(cc.sys.isMobile){
+			cc.view.resizeWithBrowserSize(true);
+			cc.view.setDesignResolutionSize(1080, 1920, cc.ResolutionPolicy.SHOW_ALL);
+		}else{
+			this.node.getComponent(cc.Canvas).fitHeight = true;
+			this.node.getComponent(cc.Canvas).fitWidth = true;
+        }
+        
         this.calculateBetAmount();
         if(!globalData.getSocket()){
             this.getComponent("Socket").connectSocket();
