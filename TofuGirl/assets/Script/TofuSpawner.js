@@ -110,7 +110,7 @@ cc.Class({
 
     onLoad () {
         this.main = this.main.getComponent("MainGame");
-        this.main.score.string = Math.round(this.main.accumulateMultiplier * 100) / 100;
+        this.main.score.string = "x"+Math.round(this.main.accumulateMultiplier * 100) / 100;
 
       
     },
@@ -181,13 +181,14 @@ cc.Class({
         }
         // if (!globalData.showResult) {
         this.main.accumulateMultiplier += currentMultiplier;
-        this.main.score.string = Math.round(this.main.accumulateMultiplier * 100) / 100;
+        this.main.score.string = "x"+Math.round(this.main.accumulateMultiplier * 100) / 100;
         // }
         var random = parseInt(Math.random() * (1 + 1 - 0) + 0);
         var tofu = cc.instantiate(this.tofuPrefab);
         let rigidBody = tofu.getComponent(cc.RigidBody);
         tofu.parent = this.spawnLayer;
         tofu.getComponent("Tofu").multiplier = currentMultiplier;
+        cc.log(this.main.accumulateMultiplier + "|| "+ globalData.MaxWinMultiplier);
         if(globalData.tofuSpawned % 5 == 0){
             tofu.getComponent("Tofu").enableCountIndicator();
         }

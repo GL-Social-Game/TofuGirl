@@ -201,6 +201,14 @@ cc.Class({
     // LIFE-CYCLE CALLBACKS:
 
     onLoad () {
+        // if(cc.sys.isMobile){
+		// 	cc.view.resizeWithBrowserSize(true);
+		// 	cc.view.setDesignResolutionSize(1080, 1920, cc.ResolutionPolicy.SHOW_ALL);
+		// }else{
+		// 	this.node.getComponent(cc.Canvas).fitHeight = true;
+		// 	this.node.getComponent(cc.Canvas).fitWidth = true;
+        // }
+
         for(let i = 0; i < this.countIndicator.length; i++){
             this.countIndicator[i].y = 10000;
             this.countIndicatorLabel[i].string = "0";
@@ -261,6 +269,14 @@ cc.Class({
     startGame(){
         //globalData.canStartGame = true;
         this.chooseTofuLayer.active = false;
+        if(globalData.isDemo){
+            var max = 100;
+            var min = 0;
+            globalData.MaxWinMultiplier = parseInt(Math.random() * (max + 1 - min) + min);;
+            if (globalData.MaxWinMultiplier <= 1) {
+                globalData.MaxWinMultiplier = Math.round((Math.random() * (1 + 1 - 0) + 0) * 10) / 10;
+            }
+        }
     },
     //#endregion
     
@@ -446,6 +462,12 @@ cc.Class({
             globalData.getSocket().emit('bet', emit_result);
         }
         else{
+            var max = 100;
+            var min = 0;
+            globalData.MaxWinMultiplier = parseInt(Math.random() * (max + 1 - min) + min);;
+            if (globalData.MaxWinMultiplier <= 1) {
+                globalData.MaxWinMultiplier = Math.round((Math.random() * (1 + 1 - 0) + 0) * 10) / 10;
+            }
             globalData.settings.balance -=this.currentBetting;
         }
         this.loadingLayer.opacity = 255;
@@ -481,7 +503,7 @@ cc.Class({
                         this.perfectAnimationLabel.string="+"+ Math.round((this.multiplier*90/100)*10000)/10000;
                         // this.perfectAnimationText.play("TextAnimation");
                         this.total_add = this.currentBetting * this.currentWinMultiplier;
-                        this.winAmountLabel.string = Math.round(this.currentWinMultiplier*100)/100;
+                        this.winAmountLabel.string = "x"+ Math.round(this.currentWinMultiplier*100)/100;
                         this.resultScore.string = this.currentWinMultiplier;
                         this.resultWinAmountLabel.string=Math.round(this.total_add*100)/100;
                     }
@@ -500,7 +522,7 @@ cc.Class({
                         this.animationLabel.string="+"+ Math.round((this.multiplier*100/100)*1000)/1000;
                         // this.animationText.play("TextAnimation");
                         this.total_add = this.currentBetting *  this.currentWinMultiplier;
-                        this.winAmountLabel.string= Math.round(this.currentWinMultiplier*100)/100;
+                        this.winAmountLabel.string= "x"+Math.round(this.currentWinMultiplier*100)/100;
                         this.resultScore.string =   this.currentWinMultiplier;
                         this.resultWinAmountLabel.string=Math.round(this.total_add*100)/100;
                     }

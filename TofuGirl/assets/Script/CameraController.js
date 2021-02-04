@@ -18,13 +18,20 @@ cc.Class({
             default:null,
             type:cc.Node,
         },
-     
+        table:{
+            default:null,
+            type:cc.Node,
+        },
+        plate:{
+            default:null,
+            type:cc.Node,
+        },
     },
 
     // LIFE-CYCLE CALLBACKS:
 
     onLoad () {
-       
+       this.moveValue = 0;
     },
 
    moveCamera(valueY){
@@ -44,7 +51,13 @@ cc.Class({
         this.bgImage.runAction(actionBg);
         this.main.fakeJump();
         this.node.runAction(action);
- 
+        if(valueY < 1000){
+            this.table.runAction(cc.moveTo(0.2,cc.v2(0,this.table.y - this.moveValue)));
+            this.plate.runAction(cc.moveTo(0.2,cc.v2(0,this.plate.y - this.moveValue)));
+            this.moveValue=200;
+        }
+        // this.plate.runAction(cc.moveTo(0.2,cc.v2(0,this.plate.y-60)));
+
    },
     
 
@@ -52,6 +65,7 @@ cc.Class({
     for (var i = 0; i < this.staticItemList.length; i++) {
         this.staticItemList[i].y = valueY;
     }
+    this.moveValue = 140;
    },
 
     start () {

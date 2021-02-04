@@ -28,6 +28,9 @@ export function setSocket(value){
     return (socket);
 }
 
+export var tofuSpawnedBoundary = [15,20,25,30,34,36,38,40,42,46,50,58,63,68];
+export var tofuSpawnedMultiplier = [0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1,1.5,2,3,4,5];
+
 export var maxPayOut = 0;
 export var settings = {
     balance : 9999999999999999,
