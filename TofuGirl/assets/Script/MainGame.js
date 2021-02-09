@@ -196,6 +196,11 @@ cc.Class({
             default:[],
             type:[cc.Label],
         },
+
+        endGameCalculationLabel:{
+            default:null,
+            type:cc.Label,
+        },
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -268,6 +273,7 @@ cc.Class({
     },
     startGame(){
         //globalData.canStartGame = true;
+        this.endGameCalculationLabel.enabled = false;
         this.chooseTofuLayer.active = false;
         if(globalData.isDemo){
             var max = 100;
@@ -355,6 +361,7 @@ cc.Class({
                 this.loseText.string="Thank You For Playing!";
             }
             this.endGameScoreLabel.string = Math.round((this.total_add) * 100) / 100;
+            // this.endGameCalculationLabel.string = "(" + this.currentBetting + this.endGameScoreLabel.string + ")";
             this.endGameLayer.active = true;
             if(globalData.settings.balance>=this.currentBetting){
                 this.replayButton.interactable = true;
@@ -374,12 +381,15 @@ cc.Class({
                 this.loseText.string="Thank You For Playing!";
             }
             this.endGameScoreLabel.string = Math.round((this.total_add) * 100) / 100;
+            
             this.endGameLayer.active = true;
             if(isBoom){
                 this.resultScore.string = "Boom";
             }
             else{
-                this.resultScore.string = Math.round(this.currentWinMultiplier*100)/100;
+                this.resultScore.string = "x"+Math.round(this.currentWinMultiplier*100)/100;
+                this.endGameCalculationLabel.enabled = true;
+                this.endGameCalculationLabel.string = "(" + this.currentBetting + this.resultScore.string + ")";
             }
             if(globalData.settings.balance>=this.currentBetting){
                 this.replayButton.interactable = true;
@@ -407,7 +417,9 @@ cc.Class({
             else{
                 this.loseText.string="Thank You For Playing!";
             }
-            this.endGameScoreLabel.string=Math.round((this.total_add) * 100) / 100;
+            this.endGameScoreLabel.string = Math.round((this.total_add) * 100) / 100;
+            // this.endGameCalculationLabel.string = "(" + this.currentBetting + this.endGameScoreLabel.string + ")";
+
             this.endGameLayer.active = true;
             if(globalData.settings.balance>=this.currentBetting){
                 this.replayButton.interactable = true;
