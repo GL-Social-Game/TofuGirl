@@ -57,6 +57,7 @@ export var ticket_id = -1;
 
 export var errorMessage = "";
 export var isEncrypt = true;
+export var firstPrompt = false;
 
 export var host_id=0;
 export var access_token = 0;
