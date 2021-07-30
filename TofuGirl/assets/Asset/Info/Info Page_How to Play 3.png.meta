@@ -1,6 +1,6 @@
 {
   "ver": "2.3.5",
-  "uuid": "d4b85744-920f-44c4-a4c9-e7e116319cfd",
+  "uuid": "e7933bca-7ffa-4227-92d7-a6d9001abda5",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
@@ -11,10 +11,10 @@
   "height": 1414,
   "platformSettings": {},
   "subMetas": {
-    "Info Page_How to Play 2": {
+    "Info Page_How to Play 3": {
       "ver": "1.0.4",
-      "uuid": "f8ccc832-c265-4185-825b-c81991068e8a",
-      "rawTextureUuid": "d4b85744-920f-44c4-a4c9-e7e116319cfd",
+      "uuid": "51c6e37b-7553-49b4-8f5d-ea1ac8aca194",
+      "rawTextureUuid": "e7933bca-7ffa-4227-92d7-a6d9001abda5",
       "trimType": "auto",
       "trimThreshold": 1,
       "rotated": false,

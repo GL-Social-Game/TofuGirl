@@ -57,7 +57,7 @@ cc.Class({
 		let xhr = new XMLHttpRequest();
 		var self = this;
 		if(global.host_id==null && global.access_token==null){
-
+			// this.startGuestMode();
 			if(!global.isDemo){
 				self.errorLayer.active = true;
 				self.errorLabel.string=" You Are Playing For Fun.";
@@ -152,7 +152,7 @@ cc.Class({
 
 			let url = apiURL + "/api/user/get-settings?host_id="+global.host_id+"&access_token="+global.access_token+"&game_code="+global.game_code;
 			// let url = "https://bo-stage.slot28.com/api/user/get-settings?host_id="+global.host_id+"&access_token="+global.access_token+"&game_code=24";
-	
+			cc.log(url);
 			// let url = "https://bo-stage-apl.velachip.com/api/user/get-settings?host_id=0e83088027d4c42c8e9934388480c996&access_token=demo01&game_code=21";
 			xhr.open("POST", url, true);
 			xhr.setRequestHeader("Content-Type", "application/json");

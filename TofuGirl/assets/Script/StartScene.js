@@ -59,6 +59,18 @@ cc.Class({
             default:null,
             type:cc.Node,
         },
+        message:{
+			default:null,
+			type:cc.Label
+		},
+        prompt:{
+            default:null,
+            type:cc.Node
+        },
+        errorButtons:{
+            default:[],
+            type:[cc.Node],
+        },
     },
 
     openExit(){
@@ -150,6 +162,7 @@ cc.Class({
 
 
     blankScreen(){
+        cc.log(globalData.settings.lobby_url);
         window.location.href=globalData.settings.lobby_url;
     },
 
@@ -169,7 +182,12 @@ cc.Class({
         }   
     },
     update (dt) {
-
+        if(globalData.isKicked){
+            this.errorButtons[0].active = false;
+            this.errorButtons[1].active = true;
+            this.message.string = globalData.kickMessage;
+            this.prompt.active = true;
+		}
         if(!globalData.isDemo){
             if(this.loadingLayer.active){
                 if(globalData.finishGetData){

@@ -163,6 +163,8 @@ cc.Class({
                                 if (this.finalTofu == globalData.maxTofuAmount) {
                                     this.touchController.cancelJump();
                                     globalData.showResult = true;
+                                    cc.audioEngine.playMusic(this.main.winBGM, false);
+                                    this.main.canPlaySFX = false;
                                     // this.scheduleOnce(function () {
                                     // }, 0.21);
                                 }

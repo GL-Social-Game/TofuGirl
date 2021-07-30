@@ -129,7 +129,7 @@ cc.Class({
 
     spawn() {
         
-        cc.log(globalData.tofuSpawned + " || " + globalData.maxTofuAmount);
+        // cc.log(globalData.tofuSpawned + " || " + globalData.maxTofuAmount);
         globalData.tofuSpawned++;
         this.spawnSpeedState();
         // TODO: assign currentMultiplier based on checkpoint 
@@ -188,7 +188,7 @@ cc.Class({
         let rigidBody = tofu.getComponent(cc.RigidBody);
         tofu.parent = this.spawnLayer;
         tofu.getComponent("Tofu").multiplier = currentMultiplier;
-        cc.log(this.main.accumulateMultiplier + "|| "+ globalData.MaxWinMultiplier);
+        // cc.log(this.main.accumulateMultiplier + "|| "+ globalData.MaxWinMultiplier);
         if(globalData.tofuSpawned % 5 == 0){
             tofu.getComponent("Tofu").enableCountIndicator();
         }

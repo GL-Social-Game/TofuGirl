@@ -54,7 +54,8 @@ export var isfullScreen =0;
 // export var game_code = 24;
 export var game_code = 71;
 export var ticket_id = -1;
-
+export var isKicked = false;
+export var kickMessage = "";
 export var errorMessage = "";
 export var isEncrypt = true;
 export var firstPrompt = false;

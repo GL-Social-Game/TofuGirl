@@ -182,18 +182,10 @@ cc.Class({
         });
 
         global.getSocket().on('kick-user', function(data){
-            // var resp = data;
-            data = self.parseDataFormat(data);
-            var resp = ecrypt.decrypt(data);
-            resp = self.parseDataFormat(resp);
+            data = self.socketReceiveAction(data);
 
-            if(commonErrorMessage[URL.lang][resp.status_code] != null){
-                // self.getComponent("uiController").showErrorMessage(commonErrorMessage[URL.lang][resp.status_code], true);
-            }
-
-            if(resp.status_code == "1028"){
-                global.getSocket().disconnect()
-            }
+            global.isKicked = true;
+            global.kickMessage = data.message;
         });
     },
 

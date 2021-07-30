@@ -66,6 +66,10 @@ cc.Class({
             default:null,
             type:cc.AudioClip
         },
+        winBGM:{
+            default:null,
+            type:cc.AudioClip
+        },
         loadingLayer:{
             default:null,
             type:cc.Node,
@@ -201,6 +205,15 @@ cc.Class({
             default:null,
             type:cc.Label,
         },
+        message:{
+			default:null,
+			type:cc.Label
+		},
+        prompt:{
+            default:null,
+            type:cc.Node
+        },
+        canPlaySFX: true,
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -371,13 +384,15 @@ cc.Class({
 
     loseTrigger(isBoom){
         this.questionMark.active=true;
-        this.playEffect(this.loseSound, globalData.getRotateVolume());
         this.sendEndResult();
         this.scheduleOnce(function(){
             if(this.total_add>0){
                 this.loseText.string="Congratulations!";
+                cc.audioEngine.playMusic(this.winBGM, false);
+                this.canPlaySFX = false;
             }
             else{
+                this.playEffect(this.loseSound, globalData.getRotateVolume());
                 this.loseText.string="Thank You For Playing!";
             }
             this.endGameScoreLabel.string = Math.round((this.total_add) * 100) / 100;
@@ -445,7 +460,9 @@ cc.Class({
             if(globalData.isEncrypt){
                 emit_result = btoa(JSON.stringify(emit_result));
             }
-            globalData.getSocket().emit('send-result', emit_result);
+            if(!globalData.isKicked){
+                globalData.getSocket().emit('send-result', emit_result);
+            }
         }
         else{
             globalData.settings.balance+=this.total_add;
@@ -471,7 +488,9 @@ cc.Class({
             if(globalData.isEncrypt){
                 emit_result = btoa(JSON.stringify(emit_result));
             }
-            globalData.getSocket().emit('bet', emit_result);
+            if (!globalData.isKicked) {
+                globalData.getSocket().emit('bet', emit_result);
+            }
         }
         else{
             var max = 100;
@@ -491,6 +510,7 @@ cc.Class({
     
     backToHome(){
         this.loadingLayer.active = true;
+        this.stopBGM();
         // globalData.getSocket().disconnect();
         cc.director.loadScene("StartScene");
     },
@@ -558,7 +578,10 @@ cc.Class({
     },
    
     update (dt) {
-
+        if(globalData.isKicked){
+			this.message.string = globalData.kickMessage;
+            this.prompt.active = true;
+		}
         if (!this.touchController.autoJumpEnable) {
             if (!this.stopOnce) {
                 this.stopOnce = true;
@@ -611,7 +634,14 @@ cc.Class({
             
         }
     },
-
+    blankScreen(){
+        if (globalData.settings.lobby_url != null && globalData.settings.lobby_url != "") {
+            window.open(globalData.settings.lobby_url, "_self");
+        } else {
+            window.open("about:blank", "_self");
+        }
+        // window.location.href=globalData.settings.lobby_url;
+    },
     calculateBetAmount(){
         this.maintBetOption = globalData.getBetSelection();
         if (this.maintBetOption == 0) {
@@ -661,6 +691,9 @@ cc.Class({
 
         }
     },
+    stopBGM(){
+        cc.audioEngine.stopMusic();
+    },
 
     buttonClickSound(){
         this.playEffect(this.button_click, globalData.getEffectVolume());
@@ -676,11 +709,13 @@ cc.Class({
         this.playEffect(this.almostMissSound, globalData.getRotateVolume());
     },
     playEffect:function(audio, volume){
-        this.effect_id2 = cc.audioEngine.play(audio, false);
-        if(globalData.getSound() == 0 ){
-            cc.audioEngine.setVolume(this.effect_id2, 0.0);
-        }else if(volume != null){
-            cc.audioEngine.setVolume(this.effect_id2, volume);
+        if(this.canPlaySFX){
+            this.effect_id2 = cc.audioEngine.play(audio, false);
+            if(globalData.getSound() == 0 ){
+                cc.audioEngine.setVolume(this.effect_id2, 0.0);
+            }else if(volume != null){
+                cc.audioEngine.setVolume(this.effect_id2, volume);
+            }
         }
         return this.effect_id2;
     },
