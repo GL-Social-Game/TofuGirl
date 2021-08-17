@@ -247,7 +247,7 @@
       "array": [
         0,
         0,
-        358.5345171667576,
+        774.2267109832882,
         0,
         0,
         0,
@@ -5712,7 +5712,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "New Label",
+    "_name": "Version Label",
     "_objFlags": 0,
     "_parent": {
       "__id__": 127
@@ -5735,20 +5735,20 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 137.89,
+      "width": 115.64,
       "height": 50.4
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
-      "x": 0.5,
+      "x": 1,
       "y": 0.5
     },
     "_trs": {
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        -1099.232,
-        -928.821,
+        -1030,
+        -900,
         0,
         0,
         0,
@@ -5788,8 +5788,8 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_useOriginalSize": false,
-    "_string": "V0.3.3a",
-    "_N$string": "V0.3.3a",
+    "_string": "V0.3.4",
+    "_N$string": "V0.3.4",
     "_fontSize": 40,
     "_lineHeight": 40,
     "_enableWrapText": true,

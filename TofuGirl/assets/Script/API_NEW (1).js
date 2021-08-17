@@ -1,4 +1,5 @@
 import * as ecryptContoller from 'ecrypt_New';
+import * as constant from "Constant";
 
 var global = require("GlobalData");
 
@@ -18,8 +19,8 @@ cc.Class({
                 // cc.log(networkConfigJson.api_url);
 
                 global.geoIP_URL = networkConfigJson.geoip_url;
-
                 global.api_Url = networkConfigJson.api_url;
+                constant.socketURL = constant.prodSocketURL;
                 
                 // cc.log(global.SetGeoip_Url(networkConfigJson.geoip_url));
                 // cc.log(global.SetApi_Url(networkConfigJson.api_url));

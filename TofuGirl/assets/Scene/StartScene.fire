@@ -255,7 +255,7 @@
       "array": [
         0,
         0,
-        358.5345171667576,
+        774.2267109832882,
         0,
         0,
         0,
@@ -12123,7 +12123,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 137.89,
+      "width": 115.64,
       "height": 50.4
     },
     "_anchorPoint": {
@@ -12176,8 +12176,8 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_useOriginalSize": false,
-    "_string": "V0.3.3a",
-    "_N$string": "V0.3.3a",
+    "_string": "V0.3.4",
+    "_N$string": "V0.3.4",
     "_fontSize": 40,
     "_lineHeight": 40,
     "_enableWrapText": true,

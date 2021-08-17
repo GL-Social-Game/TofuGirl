@@ -226,7 +226,6 @@ cc.Class({
 		// 	this.node.getComponent(cc.Canvas).fitHeight = true;
 		// 	this.node.getComponent(cc.Canvas).fitWidth = true;
         // }
-
         for(let i = 0; i < this.countIndicator.length; i++){
             this.countIndicator[i].y = 10000;
             this.countIndicatorLabel[i].string = "0";
@@ -402,7 +401,7 @@ cc.Class({
                 this.resultScore.string = "Boom";
             }
             else{
-                this.resultScore.string = "x"+Math.round(this.currentWinMultiplier*100)/100;
+                this.resultScore.string = "x" + Math.round(this.currentWinMultiplier*100)/100;
                 this.endGameCalculationLabel.enabled = true;
                 this.endGameCalculationLabel.string = "(" + this.currentBetting + this.resultScore.string + ")";
             }
@@ -536,7 +535,7 @@ cc.Class({
                         // this.perfectAnimationText.play("TextAnimation");
                         this.total_add = this.currentBetting * this.currentWinMultiplier;
                         this.winAmountLabel.string = "x"+ Math.round(this.currentWinMultiplier*100)/100;
-                        this.resultScore.string = this.currentWinMultiplier;
+                        this.resultScore.string = Math.round(this.currentWinMultiplier*100)/100;
                         this.resultWinAmountLabel.string=Math.round(this.total_add*100)/100;
                     }
                 }
@@ -555,7 +554,7 @@ cc.Class({
                         // this.animationText.play("TextAnimation");
                         this.total_add = this.currentBetting *  this.currentWinMultiplier;
                         this.winAmountLabel.string= "x"+Math.round(this.currentWinMultiplier*100)/100;
-                        this.resultScore.string =   this.currentWinMultiplier;
+                        this.resultScore.string = Math.round(this.currentWinMultiplier*100)/100;
                         this.resultWinAmountLabel.string=Math.round(this.total_add*100)/100;
                     }
                 }
