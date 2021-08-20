@@ -104,9 +104,6 @@ cc.Class({
         this.loadingLayer.active =true;
         this.api = this.node.getComponent("API");
         this.api.getSettings();
-        if(!globalData.getSocket()){
-            this.getComponent("Socket").connectSocket();
-        }
         const isIOS14Device = cc.sys.os === cc.sys.OS_IOS && cc.sys.isBrowser && cc.sys.isMobile && /iPhone OS 14/.test(window.navigator.userAgent);
         if (isIOS14Device) {
             cc.MeshBuffer.prototype.checkAndSwitchBuffer = function (vertexCount) {

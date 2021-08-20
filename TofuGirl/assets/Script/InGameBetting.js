@@ -114,7 +114,7 @@ cc.Class({
             // this.currentBettingLabel.string = this.currentBetting;
             // this.moneyPerScoreLabel.string = "1 Score = " + Math.round(((this.currentBetting / globalData.winMultiplier[this.selectedBetOption])*100/100) * 1000) / 1000;
             globalData.setMultiplier(Math.round(this.currentBetting / globalData.winMultiplier[this.selectedBetOption] * 10000) / 10000);
-            if (globalData.settings.balance >= this.currentBetting) {
+            if (globalData.settings.balance >= this.currentBetting && globalData.getSocket() != null) {
                 this.playButton.interactable = true;
                 this.mainGame.closeInsufficient();
 
@@ -162,7 +162,7 @@ cc.Class({
     //    this.moneyPerScoreLabel.string = "1 Score = " + Math.round(((this.currentBetting / globalData.winMultiplier[this.selectedBetOption])*100/100) * 1000) / 1000;
        globalData.setMultiplier(Math.round(this.currentBetting/globalData.winMultiplier[this.selectedBetOption]*10000)/10000);
 
-        if (globalData.settings.balance >= this.currentBetting) {
+        if (globalData.settings.balance >= this.currentBetting && globalData.getSocket() != null) {
             this.playButton.interactable = true;
             this.mainGame.closeInsufficient();
 
