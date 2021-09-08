@@ -85,7 +85,7 @@ cc.Class({
 		
 						global.settings = parsed.data;
 						cc.log(global.settings);
-						constant.socketURL = global.settings.socket_url;
+						constant.setSocketURL(global.settings.socket_url);
 						if(!global.getSocket()){
 							self.getComponent("Socket").connectSocket();
 						}
@@ -134,7 +134,7 @@ cc.Class({
 	
 					global.settings = parsed.data;
 					cc.log(global.settings);
-					constant.socketURL = global.settings.socket_url;
+					constant.setSocketURL(global.settings.socket_url);
 					if(!global.getSocket()){
 						self.getComponent("Socket").connectSocket();
 					}

@@ -238,9 +238,6 @@ cc.Class({
         this.calculateBetAmount();
         this.accumulateMultiplier = 0;
         this.currentWinMultiplier = 0;
-        // if(!globalData.getSocket()){
-        //     this.getComponent("Socket").connectSocket();
-        // }
         this.multiplier = globalData.getMultiplier();
         this.maxPayOut= globalData.maxPayOut;
         globalData.currentValueSound=-1;
