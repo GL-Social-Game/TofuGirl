@@ -1,6 +1,7 @@
 {
-  "ver": "2.3.5",
+  "ver": "2.3.7",
   "uuid": "e9faffc3-1bb4-4c17-99d8-c18da85ea76a",
+  "importer": "texture",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
@@ -12,8 +13,9 @@
   "platformSettings": {},
   "subMetas": {
     "Wood Stand": {
-      "ver": "1.0.4",
+      "ver": "1.0.6",
       "uuid": "962187a9-93e3-4ec9-b749-4aa7aa1b6dfc",
+      "importer": "sprite-frame",
       "rawTextureUuid": "e9faffc3-1bb4-4c17-99d8-c18da85ea76a",
       "trimType": "auto",
       "trimThreshold": 1,

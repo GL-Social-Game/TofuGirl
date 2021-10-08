@@ -1,6 +1,7 @@
 {
-  "ver": "2.3.5",
+  "ver": "2.3.7",
   "uuid": "87cad853-a4f0-488d-81a6-1a2f62cf6740",
+  "importer": "texture",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
@@ -12,8 +13,9 @@
   "platformSettings": {},
   "subMetas": {
     "Total Win Button Frame": {
-      "ver": "1.0.4",
+      "ver": "1.0.6",
       "uuid": "b387756c-9b26-4559-9502-2ef6b64a9542",
+      "importer": "sprite-frame",
       "rawTextureUuid": "87cad853-a4f0-488d-81a6-1a2f62cf6740",
       "trimType": "auto",
       "trimThreshold": 1,

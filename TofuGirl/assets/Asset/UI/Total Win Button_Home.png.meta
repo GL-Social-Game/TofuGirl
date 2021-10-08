@@ -1,6 +1,7 @@
 {
-  "ver": "2.3.5",
+  "ver": "2.3.7",
   "uuid": "32aa2082-e3b6-4264-ae10-27846a12088c",
+  "importer": "texture",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
@@ -12,8 +13,9 @@
   "platformSettings": {},
   "subMetas": {
     "Total Win Button_Home": {
-      "ver": "1.0.4",
+      "ver": "1.0.6",
       "uuid": "7916afd5-e275-4dc6-b6ad-314db4b94b13",
+      "importer": "sprite-frame",
       "rawTextureUuid": "32aa2082-e3b6-4264-ae10-27846a12088c",
       "trimType": "auto",
       "trimThreshold": 1,

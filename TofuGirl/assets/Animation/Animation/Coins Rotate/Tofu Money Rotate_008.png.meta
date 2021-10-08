@@ -1,6 +1,7 @@
 {
-  "ver": "2.3.5",
+  "ver": "2.3.7",
   "uuid": "f9b7467a-5e29-42e2-8987-c7dcfd756dbd",
+  "importer": "texture",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
@@ -12,8 +13,9 @@
   "platformSettings": {},
   "subMetas": {
     "Tofu Money Rotate_008": {
-      "ver": "1.0.4",
+      "ver": "1.0.6",
       "uuid": "d02f13ee-ca11-432d-9900-f798ee5a5b09",
+      "importer": "sprite-frame",
       "rawTextureUuid": "f9b7467a-5e29-42e2-8987-c7dcfd756dbd",
       "trimType": "auto",
       "trimThreshold": 1,

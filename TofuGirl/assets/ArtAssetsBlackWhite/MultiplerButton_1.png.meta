@@ -1,6 +1,7 @@
 {
-  "ver": "2.3.5",
+  "ver": "2.3.7",
   "uuid": "b9f0b628-a81d-4da8-bff2-eefaa8c4d3fe",
+  "importer": "texture",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
@@ -12,8 +13,9 @@
   "platformSettings": {},
   "subMetas": {
     "MultiplerButton_1": {
-      "ver": "1.0.4",
+      "ver": "1.0.6",
       "uuid": "4c097d4a-0300-4542-8641-d352cfcab8d8",
+      "importer": "sprite-frame",
       "rawTextureUuid": "b9f0b628-a81d-4da8-bff2-eefaa8c4d3fe",
       "trimType": "auto",
       "trimThreshold": 1,

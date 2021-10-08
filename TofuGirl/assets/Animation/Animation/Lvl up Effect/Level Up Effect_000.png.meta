@@ -1,6 +1,7 @@
 {
-  "ver": "2.3.5",
+  "ver": "2.3.7",
   "uuid": "076b04a0-a08d-4758-8488-e63121111b70",
+  "importer": "texture",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
@@ -12,8 +13,9 @@
   "platformSettings": {},
   "subMetas": {
     "Level Up Effect_000": {
-      "ver": "1.0.4",
+      "ver": "1.0.6",
       "uuid": "19da0c6b-3371-4a09-a15d-bef0ddc21095",
+      "importer": "sprite-frame",
       "rawTextureUuid": "076b04a0-a08d-4758-8488-e63121111b70",
       "trimType": "auto",
       "trimThreshold": 1,

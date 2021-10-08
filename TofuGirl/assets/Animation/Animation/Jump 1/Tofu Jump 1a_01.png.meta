@@ -1,6 +1,7 @@
 {
-  "ver": "2.3.5",
+  "ver": "2.3.7",
   "uuid": "641ad335-9274-4e5e-a1a6-c2e1cf694086",
+  "importer": "texture",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
@@ -12,8 +13,9 @@
   "platformSettings": {},
   "subMetas": {
     "Tofu Jump 1a_01": {
-      "ver": "1.0.4",
+      "ver": "1.0.6",
       "uuid": "60dd641e-1de3-4a73-a064-a1bb107d9c8a",
+      "importer": "sprite-frame",
       "rawTextureUuid": "641ad335-9274-4e5e-a1a6-c2e1cf694086",
       "trimType": "custom",
       "trimThreshold": 1,

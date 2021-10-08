@@ -1,6 +1,7 @@
 {
-  "ver": "2.3.5",
+  "ver": "2.3.7",
   "uuid": "f86afd5b-54b2-4edd-8ee3-aa136eb7a625",
+  "importer": "texture",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
@@ -12,8 +13,9 @@
   "platformSettings": {},
   "subMetas": {
     "Radial Effect2_001": {
-      "ver": "1.0.4",
+      "ver": "1.0.6",
       "uuid": "53e4762b-b3cf-4411-9989-1e8c32c9febd",
+      "importer": "sprite-frame",
       "rawTextureUuid": "f86afd5b-54b2-4edd-8ee3-aa136eb7a625",
       "trimType": "auto",
       "trimThreshold": 1,

@@ -1,6 +1,7 @@
 {
-  "ver": "2.3.5",
+  "ver": "2.3.7",
   "uuid": "cacf75f8-c713-4f18-ae82-5f121eaf56b7",
+  "importer": "texture",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
@@ -12,8 +13,9 @@
   "platformSettings": {},
   "subMetas": {
     "Tofu Goyang_010": {
-      "ver": "1.0.4",
+      "ver": "1.0.6",
       "uuid": "f84a0c19-14cc-42b1-9954-d900ab9d12d6",
+      "importer": "sprite-frame",
       "rawTextureUuid": "cacf75f8-c713-4f18-ae82-5f121eaf56b7",
       "trimType": "auto",
       "trimThreshold": 1,

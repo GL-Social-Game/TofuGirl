@@ -1,6 +1,7 @@
 {
-  "ver": "2.3.5",
+  "ver": "2.3.7",
   "uuid": "c7c99aaa-1127-4c11-80ab-552e9e48b4d7",
+  "importer": "texture",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
@@ -12,8 +13,9 @@
   "platformSettings": {},
   "subMetas": {
     "Parachute Gals_06": {
-      "ver": "1.0.4",
+      "ver": "1.0.6",
       "uuid": "9ab30f3a-1145-4178-bff2-1ee80ad45d7c",
+      "importer": "sprite-frame",
       "rawTextureUuid": "c7c99aaa-1127-4c11-80ab-552e9e48b4d7",
       "trimType": "auto",
       "trimThreshold": 1,

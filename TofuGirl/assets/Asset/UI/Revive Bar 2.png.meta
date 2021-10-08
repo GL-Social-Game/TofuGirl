@@ -1,6 +1,7 @@
 {
-  "ver": "2.3.5",
+  "ver": "2.3.7",
   "uuid": "303b05ba-79e1-4d13-b5f4-097642b5347b",
+  "importer": "texture",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
@@ -12,8 +13,9 @@
   "platformSettings": {},
   "subMetas": {
     "Revive Bar 2": {
-      "ver": "1.0.4",
+      "ver": "1.0.6",
       "uuid": "17950185-f075-4bc6-a2e6-bce2104d20b7",
+      "importer": "sprite-frame",
       "rawTextureUuid": "303b05ba-79e1-4d13-b5f4-097642b5347b",
       "trimType": "auto",
       "trimThreshold": 1,

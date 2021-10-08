@@ -1,6 +1,7 @@
 {
-  "ver": "2.3.5",
+  "ver": "2.3.7",
   "uuid": "425ce3d1-324b-4cdb-bc0f-028d084fa443",
+  "importer": "texture",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
@@ -12,8 +13,9 @@
   "platformSettings": {},
   "subMetas": {
     "Terbalik Jump_010": {
-      "ver": "1.0.4",
+      "ver": "1.0.6",
       "uuid": "02a3e111-d4ea-4116-9872-fffbc18f1f63",
+      "importer": "sprite-frame",
       "rawTextureUuid": "425ce3d1-324b-4cdb-bc0f-028d084fa443",
       "trimType": "auto",
       "trimThreshold": 1,

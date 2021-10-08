@@ -1,6 +1,7 @@
 {
-  "ver": "2.3.5",
+  "ver": "2.3.7",
   "uuid": "fd2a3fe2-4071-4fae-9085-e0d71f9985d1",
+  "importer": "texture",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
@@ -12,8 +13,9 @@
   "platformSettings": {},
   "subMetas": {
     "Enter tofu amount here": {
-      "ver": "1.0.4",
+      "ver": "1.0.6",
       "uuid": "c25830d4-b8ed-4bae-8c2d-4c92d7d21836",
+      "importer": "sprite-frame",
       "rawTextureUuid": "fd2a3fe2-4071-4fae-9085-e0d71f9985d1",
       "trimType": "auto",
       "trimThreshold": 1,

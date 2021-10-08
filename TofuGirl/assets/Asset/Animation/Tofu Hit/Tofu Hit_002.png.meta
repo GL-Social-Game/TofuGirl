@@ -1,6 +1,7 @@
 {
-  "ver": "2.3.5",
+  "ver": "2.3.7",
   "uuid": "d117367c-c36c-4264-bdd3-2ee479bfe0a6",
+  "importer": "texture",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
@@ -12,8 +13,9 @@
   "platformSettings": {},
   "subMetas": {
     "Tofu Hit_002": {
-      "ver": "1.0.4",
+      "ver": "1.0.6",
       "uuid": "7ab4accf-64a2-4c9f-af96-3adbf451c0a2",
+      "importer": "sprite-frame",
       "rawTextureUuid": "d117367c-c36c-4264-bdd3-2ee479bfe0a6",
       "trimType": "auto",
       "trimThreshold": 1,

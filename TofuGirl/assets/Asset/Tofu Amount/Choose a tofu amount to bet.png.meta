@@ -1,6 +1,7 @@
 {
-  "ver": "2.3.5",
+  "ver": "2.3.7",
   "uuid": "904a8828-adf6-4688-9ee0-7519c13fd6fb",
+  "importer": "texture",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
@@ -12,8 +13,9 @@
   "platformSettings": {},
   "subMetas": {
     "Choose a tofu amount to bet": {
-      "ver": "1.0.4",
+      "ver": "1.0.6",
       "uuid": "4acf9035-2d20-4bef-b4c0-ad1f29aaf80e",
+      "importer": "sprite-frame",
       "rawTextureUuid": "904a8828-adf6-4688-9ee0-7519c13fd6fb",
       "trimType": "auto",
       "trimThreshold": 1,

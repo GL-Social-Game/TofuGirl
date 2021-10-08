@@ -1,6 +1,7 @@
 {
-  "ver": "2.3.5",
+  "ver": "2.3.7",
   "uuid": "52459ad3-8deb-4a6a-983f-f2ee606be823",
+  "importer": "texture",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
@@ -12,8 +13,9 @@
   "platformSettings": {},
   "subMetas": {
     "Tofu Hit Light_006": {
-      "ver": "1.0.4",
+      "ver": "1.0.6",
       "uuid": "2d8f5ddf-1e55-4a12-98af-f977f9edc4cf",
+      "importer": "sprite-frame",
       "rawTextureUuid": "52459ad3-8deb-4a6a-983f-f2ee606be823",
       "trimType": "auto",
       "trimThreshold": 1,

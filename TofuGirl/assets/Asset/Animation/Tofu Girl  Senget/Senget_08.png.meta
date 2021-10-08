@@ -1,6 +1,7 @@
 {
-  "ver": "2.3.5",
+  "ver": "2.3.7",
   "uuid": "549b0968-2004-4cc7-96c2-95847fcfbbd5",
+  "importer": "texture",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
@@ -12,8 +13,9 @@
   "platformSettings": {},
   "subMetas": {
     "Senget_08": {
-      "ver": "1.0.4",
+      "ver": "1.0.6",
       "uuid": "5a5e137b-62da-4525-a820-bac61120240b",
+      "importer": "sprite-frame",
       "rawTextureUuid": "549b0968-2004-4cc7-96c2-95847fcfbbd5",
       "trimType": "auto",
       "trimThreshold": 1,

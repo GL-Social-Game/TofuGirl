@@ -1,6 +1,7 @@
 {
-  "ver": "2.3.5",
+  "ver": "2.3.7",
   "uuid": "d484b4ee-74b3-492c-a434-f4d647b96960",
+  "importer": "texture",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
@@ -12,8 +13,9 @@
   "platformSettings": {},
   "subMetas": {
     "Ribbon 2": {
-      "ver": "1.0.4",
+      "ver": "1.0.6",
       "uuid": "93b34ee0-99e5-474f-a1a8-34dfcaeb035d",
+      "importer": "sprite-frame",
       "rawTextureUuid": "d484b4ee-74b3-492c-a434-f4d647b96960",
       "trimType": "auto",
       "trimThreshold": 1,

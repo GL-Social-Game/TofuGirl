@@ -1,6 +1,7 @@
 {
-  "ver": "2.3.5",
+  "ver": "2.3.7",
   "uuid": "02c7f1c2-d503-4f16-98d7-752f1c306f70",
+  "importer": "texture",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
@@ -12,8 +13,9 @@
   "platformSettings": {},
   "subMetas": {
     "Sound On Off Button-1": {
-      "ver": "1.0.4",
+      "ver": "1.0.6",
       "uuid": "c6c54c3b-2405-47d7-8b55-009fd3b4c47b",
+      "importer": "sprite-frame",
       "rawTextureUuid": "02c7f1c2-d503-4f16-98d7-752f1c306f70",
       "trimType": "auto",
       "trimThreshold": 1,

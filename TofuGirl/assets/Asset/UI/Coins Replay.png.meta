@@ -1,6 +1,7 @@
 {
-  "ver": "2.3.5",
+  "ver": "2.3.7",
   "uuid": "04df2ade-00aa-4f7c-837d-60ce5b26b3c6",
+  "importer": "texture",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
@@ -12,8 +13,9 @@
   "platformSettings": {},
   "subMetas": {
     "Coins Replay": {
-      "ver": "1.0.4",
+      "ver": "1.0.6",
       "uuid": "132dbb6c-7aba-4c16-a561-7021f847bc48",
+      "importer": "sprite-frame",
       "rawTextureUuid": "04df2ade-00aa-4f7c-837d-60ce5b26b3c6",
       "trimType": "auto",
       "trimThreshold": 1,

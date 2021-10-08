@@ -1,6 +1,7 @@
 {
-  "ver": "2.3.5",
+  "ver": "2.3.7",
   "uuid": "4e0aecc6-ac51-42ce-b3b0-130bee2b0989",
+  "importer": "texture",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
@@ -12,8 +13,9 @@
   "platformSettings": {},
   "subMetas": {
     "Stop Button _2": {
-      "ver": "1.0.4",
+      "ver": "1.0.6",
       "uuid": "a000f029-1ab2-451a-bf4c-719c6f93682a",
+      "importer": "sprite-frame",
       "rawTextureUuid": "4e0aecc6-ac51-42ce-b3b0-130bee2b0989",
       "trimType": "auto",
       "trimThreshold": 1,

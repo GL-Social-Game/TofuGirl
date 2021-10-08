@@ -1,6 +1,7 @@
 {
-  "ver": "2.3.5",
+  "ver": "2.3.7",
   "uuid": "4e1730df-794b-449a-af86-48bc59416456",
+  "importer": "texture",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
@@ -12,8 +13,9 @@
   "platformSettings": {},
   "subMetas": {
     "Tofu Break_04": {
-      "ver": "1.0.4",
+      "ver": "1.0.6",
       "uuid": "aa497d11-2780-43b7-ac9f-166b397030f2",
+      "importer": "sprite-frame",
       "rawTextureUuid": "4e1730df-794b-449a-af86-48bc59416456",
       "trimType": "auto",
       "trimThreshold": 1,

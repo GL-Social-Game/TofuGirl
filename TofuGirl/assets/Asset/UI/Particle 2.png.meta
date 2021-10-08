@@ -1,6 +1,7 @@
 {
-  "ver": "2.3.5",
+  "ver": "2.3.7",
   "uuid": "83953adf-4829-4f5d-8add-297a651ede13",
+  "importer": "texture",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
@@ -12,8 +13,9 @@
   "platformSettings": {},
   "subMetas": {
     "Particle 2": {
-      "ver": "1.0.4",
+      "ver": "1.0.6",
       "uuid": "91985b0f-b884-41a4-903a-03a364373624",
+      "importer": "sprite-frame",
       "rawTextureUuid": "83953adf-4829-4f5d-8add-297a651ede13",
       "trimType": "auto",
       "trimThreshold": 1,

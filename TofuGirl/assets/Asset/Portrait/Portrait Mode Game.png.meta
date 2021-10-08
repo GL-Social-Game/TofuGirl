@@ -1,6 +1,7 @@
 {
-  "ver": "2.3.5",
+  "ver": "2.3.7",
   "uuid": "c3c002cf-b266-497f-b105-16f243b73f15",
+  "importer": "texture",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
@@ -12,8 +13,9 @@
   "platformSettings": {},
   "subMetas": {
     "Portrait Mode Game": {
-      "ver": "1.0.4",
+      "ver": "1.0.6",
       "uuid": "f600ed51-d983-4766-964c-e99eb4c510fe",
+      "importer": "sprite-frame",
       "rawTextureUuid": "c3c002cf-b266-497f-b105-16f243b73f15",
       "trimType": "auto",
       "trimThreshold": 1,
