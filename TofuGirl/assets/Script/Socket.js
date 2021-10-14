@@ -21,6 +21,18 @@ cc.Class({
             default: null,
             type: cc.Label,
         },
+        errorPrompt:{
+            default: null,
+            type: cc.Node,
+        },
+        errorMessage:{
+            default: null,
+            type: cc.Label,
+        },
+        errorButton:{
+            default: null,
+            type: cc.Node,
+        },
     },
 
     // use this for initialization
@@ -182,6 +194,12 @@ cc.Class({
 
             global.isKicked = true;
             global.kickMessage = data.message;
+
+            self.errorPrompt.active = true;
+            self.errorMessage.active = "You have exceeded daily profit limit.";
+            if(self.errorButton != null){
+                self.errorButton.active = true;
+            }
         });
     },
 

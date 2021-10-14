@@ -7064,7 +7064,7 @@
         1,
         1,
         1,
-        1
+        0
       ]
     },
     "_eulerAngles": {
@@ -12837,6 +12837,12 @@
     "_enabled": true,
     "tempLabel": {
       "__id__": 129
+    },
+    "errorPrompt": {
+      "__id__": 147
+    },
+    "errorMessage": {
+      "__id__": 153
     },
     "_id": "96+SgEFRtJPIw6MZ7ecFCv"
   }
