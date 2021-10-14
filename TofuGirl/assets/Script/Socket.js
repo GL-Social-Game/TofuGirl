@@ -21,18 +21,6 @@ cc.Class({
             default: null,
             type: cc.Label,
         },
-        errorPrompt:{
-            default: null,
-            type: cc.Node,
-        },
-        errorMessage:{
-            default: null,
-            type: cc.Label,
-        },
-        errorButton:{
-            default: null,
-            type: cc.Node,
-        },
     },
 
     // use this for initialization
@@ -186,20 +174,14 @@ cc.Class({
         }),
 
         global.getSocket().on('kick-user-maintenance', function(data){
-
+            
         });
 
         global.getSocket().on('kickUser', function(data){
             data = self.socketReceiveAction(data);
 
             global.isKicked = true;
-            global.kickMessage = data.message;
-
-            self.errorPrompt.active = true;
-            self.errorMessage.active = "You have exceeded daily profit limit.";
-            if(self.errorButton != null){
-                self.errorButton.active = true;
-            }
+            global.kickMessage = "You have exceeded daily profit limit.";
         });
     },
 
