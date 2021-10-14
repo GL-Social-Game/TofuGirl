@@ -5,6 +5,8 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 import * as globalData from "GlobalData";
+import * as ecrypt from "ecrypt";
+
 cc.Class({
     extends: cc.Component,
 
@@ -451,13 +453,13 @@ cc.Class({
                 'description': "Send actual result to server",
                 'user_id': globalData.settings.user_id,
                 'api_url':globalData.api_Url,
-
+                "is_apollo_v3": globalData.is_apollo_v3,
             };
             if(globalData.isEncrypt){
-                emit_result = btoa(JSON.stringify(emit_result));
+                emit_result = ecrypt.encrypt(JSON.stringify(emit_result));
             }
             if(!globalData.isKicked){
-                globalData.getSocket().emit('send-result', emit_result);
+                globalData.getSocket().emit('result', emit_result);
             }
         }
         else{
@@ -480,9 +482,10 @@ cc.Class({
                 "scorePerOne" : globalData.getMultiplier(),
                 'api_url':globalData.api_Url,
                 "currentBetSlot" :globalData.getBetAmountIndex(),
+                "is_apollo_v3": globalData.is_apollo_v3,
             };
             if(globalData.isEncrypt){
-                emit_result = btoa(JSON.stringify(emit_result));
+                emit_result = ecrypt.encrypt(JSON.stringify(emit_result));
             }
             if (!globalData.isKicked) {
                 globalData.getSocket().emit('bet', emit_result);

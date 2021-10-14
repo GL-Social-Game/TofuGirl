@@ -16,7 +16,9 @@ export var tofuSpawned = 0;
 export var maxTofuAmount = 0;
 export var canStartGame = false;
 export var showResult = false;
-
+export var is_promotion = null;
+export var h5_app = null;
+export var commonErrorMessage = null;
 export function getSocket(){
     return socket;
 }
@@ -59,7 +61,7 @@ export var kickMessage = "";
 export var errorMessage = "";
 export var isEncrypt = true;
 export var firstPrompt = false;
-
+export var is_apollo_v3 = 1;
 export var host_id=0;
 export var access_token = 0;
 export var winMultiplier = [25,25,25,22.72727273,22.22222222];

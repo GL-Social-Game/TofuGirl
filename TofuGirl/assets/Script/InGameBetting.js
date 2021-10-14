@@ -1,4 +1,6 @@
 import * as globalData from "GlobalData";
+import * as ecrypt from "ecrypt";
+
 cc.Class({
     extends: cc.Component,
 
@@ -195,10 +197,10 @@ cc.Class({
                 "scorePerOne": globalData.getMultiplier(),
                 'api_url':globalData.api_Url,
                 "currentBetSlot" :globalData.getBetAmountIndex(),
-
+                "is_apollo_v3": globalData.is_apollo_v3,
             };
             if(globalData.isEncrypt){
-                emit_result = btoa(JSON.stringify(emit_result));
+                emit_result = ecrypt.encrypt(JSON.stringify(emit_result));
             }
             globalData.getSocket().emit('bet', emit_result);
         }
