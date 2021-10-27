@@ -5870,8 +5870,8 @@
     ],
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_string": "V0.3.8",
-    "_N$string": "V0.3.8",
+    "_string": "V0.3.9",
+    "_N$string": "V0.3.9",
     "_fontSize": 40,
     "_lineHeight": 40,
     "_enableWrapText": true,
@@ -12837,12 +12837,6 @@
     "_enabled": true,
     "tempLabel": {
       "__id__": 129
-    },
-    "errorPrompt": {
-      "__id__": 147
-    },
-    "errorMessage": {
-      "__id__": 153
     },
     "_id": "96+SgEFRtJPIw6MZ7ecFCv"
   }
