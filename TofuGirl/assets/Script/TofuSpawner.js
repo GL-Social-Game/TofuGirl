@@ -128,9 +128,8 @@ cc.Class({
     },
 
     spawn() {
-        
-        // cc.log(globalData.tofuSpawned + " || " + globalData.maxTofuAmount);
         globalData.tofuSpawned++;
+        cc.log(globalData.tofuSpawned + " || " + globalData.maxTofuAmount);
         this.spawnSpeedState();
         // TODO: assign currentMultiplier based on checkpoint 
         var currentMultiplier;
@@ -195,7 +194,7 @@ cc.Class({
         if (globalData.tofuSpawned >= globalData.maxTofuAmount) {
             tofu.getComponent("Tofu").finalTofu = true;
         }
-        if (this.main.accumulateMultiplier > globalData.MaxWinMultiplier) {
+        if (this.main.accumulateMultiplier >= globalData.MaxWinMultiplier) {
             tofu.getComponent("Tofu").isBoom = true;
         }
         else {
