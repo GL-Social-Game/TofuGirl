@@ -6,15 +6,16 @@ cc.Class({
         editbox: cc.EditBox,
 
         expectedResultLabel: cc.Label,
+        minimumTofuLabel: cc.Node,
     },
 
     onLoad: function () {
         this.main = cc.find("Canvas").getComponent("MainGame");
 
         // this.editbox.node.on('editing-did-began', this.startEdit, this);
-        this.editbox.node.on('editing-did-ended', this.editEnd, this);
+        // this.editbox.node.on('editing-did-ended', this.editEnd, this);
         this.editbox.node.on('text-changed', this.changeText, this);
-        this.editbox.node.on('editing-return', this.returnEdit, this);
+        // this.editbox.node.on('editing-return', this.returnEdit, this);
 
     },
 
@@ -53,12 +54,15 @@ cc.Class({
         if (value > 0) {
             globalData.maxTofuAmount = value;
             this.expectedResultLabel.string = "MAX MULTIPLIER: " + this.GetExpectedResult(value);
-            // cc.log(globalData.maxTofuAmount);
+        }
+        
+        if(value >= 10){
             this.main.startGameButton.interactable = true;
-
+            this.minimumTofuLabel.color = cc.color(187, 187, 187, 255);
         }    
         else{
             this.main.startGameButton.interactable = false;
+            this.minimumTofuLabel.color = cc.color(187, 70, 70, 255);
         }
     },
 

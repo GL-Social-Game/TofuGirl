@@ -114,6 +114,9 @@
     "_active": true,
     "_components": [
       {
+        "__id__": 282
+      },
+      {
         "__id__": 283
       },
       {
@@ -121,9 +124,6 @@
       },
       {
         "__id__": 285
-      },
-      {
-        "__id__": 286
       }
     ],
     "_prefab": null,
@@ -5870,8 +5870,8 @@
     ],
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_string": "V0.4.1",
-    "_N$string": "V0.4.1",
+    "_string": "V0.4.2",
+    "_N$string": "V0.4.2",
     "_fontSize": 40,
     "_lineHeight": 40,
     "_enableWrapText": true,
@@ -9319,7 +9319,7 @@
         "__id__": 265
       },
       {
-        "__id__": 281
+        "__id__": 280
       }
     ],
     "_active": true,
@@ -12036,9 +12036,6 @@
       },
       {
         "__id__": 279
-      },
-      {
-        "__id__": 280
       }
     ],
     "_prefab": null,
@@ -12465,7 +12462,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "PLACEHOLDER_LABEL copy",
+    "_name": "Minimum 10 Tofus",
     "_objFlags": 512,
     "_parent": {
       "__id__": 265
@@ -12632,17 +12629,10 @@
     "expectedResultLabel": {
       "__id__": 213
     },
-    "_id": "09eitM0btIkLratODNqYAV"
-  },
-  {
-    "__type__": "05771nhc99CGa+VCQO23Xyw",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 265
+    "minimumTofuLabel": {
+      "__id__": 275
     },
-    "_enabled": true,
-    "_id": "bbCHwnsldCYq/2Sj67InLH"
+    "_id": "09eitM0btIkLratODNqYAV"
   },
   {
     "__type__": "cc.Node",
@@ -12655,7 +12645,7 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 282
+        "__id__": 281
       }
     ],
     "_prefab": null,
@@ -12711,7 +12701,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 281
+      "__id__": 280
     },
     "_enabled": true,
     "_materials": [
