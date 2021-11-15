@@ -19,6 +19,10 @@ cc.Class({
             default:null,
             type:cc.Button,
         },
+        startGameLabelOutline:{
+            default:null,
+            type:cc.LabelOutline,
+        },
         loseText:{
             default:null,
             type:cc.Label,

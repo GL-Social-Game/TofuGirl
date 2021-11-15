@@ -17,6 +17,7 @@ cc.Class({
         this.editbox.node.on('text-changed', this.changeText, this);
         // this.editbox.node.on('editing-return', this.returnEdit, this);
 
+        this.enableStartButton(false);
     },
 
     startEdit: function (editbox) {
@@ -25,7 +26,6 @@ cc.Class({
 
 
     },
-
     editEnd: function (editbox) {
         // The parameter of the callback is the editbox component.
         // do whatever you want with the editbox.
@@ -43,8 +43,6 @@ cc.Class({
             this.main.startGameButton.interactable = false;
         }
     },
-
-
     changeText: function (editbox) {
         // The parameter of the callback is the editbox component.
         // cc.log(editbox.string);
@@ -57,16 +55,12 @@ cc.Class({
         }
         
         if(value >= 10){
-            this.main.startGameButton.interactable = true;
-            this.minimumTofuLabel.color = cc.color(187, 187, 187, 255);
+            this.enableStartButton(true);
         }    
         else{
-            this.main.startGameButton.interactable = false;
-            this.minimumTofuLabel.color = cc.color(187, 70, 70, 255);
+            this.enableStartButton(false);
         }
     },
-
-
     returnEdit: function (editbox) {
         // The parameter of the callback is the editbox component.
         // do whatever you want with the editbox.
@@ -83,7 +77,6 @@ cc.Class({
             this.main.startGameButton.interactable = false;
         }
     },
-
     GetExpectedResult(value){
         var expectedResult = 0;
         for(var i = 1; i <= value; i++){
@@ -136,5 +129,15 @@ cc.Class({
 
         return Math.round(expectedResult * 100) / 100;
     },
-
+    enableStartButton(yes){
+        this.main.startGameButton.interactable = yes;
+        if(yes){
+            this.main.startGameLabelOutline.color = cc.color(129, 70, 70, 255);
+            this.minimumTofuLabel.color = cc.color(187, 187, 187, 255);
+        }
+        else{
+            this.main.startGameLabelOutline.color = cc.color(100, 100, 100, 255);
+            this.minimumTofuLabel.color = cc.color(187, 70, 70, 255);
+        }
+    }
 });
