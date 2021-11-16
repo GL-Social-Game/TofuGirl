@@ -458,6 +458,7 @@ cc.Class({
                 'user_id': globalData.settings.user_id,
                 'api_url':globalData.api_Url,
                 "is_apollo_v3": globalData.is_apollo_v3,
+                'is_angpao': 0,
             };
             if(globalData.isEncrypt){
                 emit_result = ecrypt.encrypt(JSON.stringify(emit_result));
