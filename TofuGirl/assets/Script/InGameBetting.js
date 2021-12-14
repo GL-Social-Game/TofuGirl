@@ -60,46 +60,20 @@ cc.Class({
          this.mainGame = this.mainGame.getComponent("StartScene");
      },
 
-    
+    setAmountText(){
+		for(let i = 0; i < this.bettingOptionText.length; i++){
+            let index = i;
+            this.bettingOptionText[index].getComponent(cc.Label).string = globalData.betRangeConfig[this.maintBetOption] * globalData.betAmountConfig[index];
+		}
+	},
     SetAmount(value){
         // this.maintBetOption = this.mainBetSelection.getComponent("BetSelection").selectedBetOption;
         this.maintBetOption = globalData.getBetSelection();
-        if(this.maintBetOption==0){
-            this.myValue = 1;
-        }
-        if(this.maintBetOption==1){
-            this.myValue = 5;
-
-        }
-        if(this.maintBetOption==2){
-            this.myValue = 10;
-        }
-        if(this.maintBetOption==3){
-            this.myValue = 20;
-        }
-        for(let i = 0; i < this.bettingOptionText.length; i++){
-            if(i==0){
-                this.bettingOptionText[i].getComponent(cc.Label).string = ((1*this.myValue));
-            }
-            else if(i==1){
-                this.bettingOptionText[i].getComponent(cc.Label).string = ((1*this.myValue))*2;
-            }
-            else if(i==2){
-                this.bettingOptionText[i].getComponent(cc.Label).string = ((1*this.myValue))*3;
-            }
-            else{
-                this.bettingOptionText[i].getComponent(cc.Label).string = ((1*this.myValue)/(this.bettingOptionText.length-i))*10;
-            }
-		}   
-
+        this.myValue = globalData.betRangeConfig[this.maintBetOption];
+        this.setAmountText();
+        
         if (value != 0 && this.selectedBetOption!=10) {
-            if (this.selectedBetOption < 3) {
-                this.currentBetting = ((1 * this.myValue)) * (this.selectedBetOption + 1);
-            }
-            else {
-                this.currentBetting = ((1 * this.myValue) / (this.bettingOptionText.length - this.selectedBetOption)) * 10;
-            }
-
+            this.currentBetting = globalData.betRangeConfig[this.maintBetOption] * globalData.betAmountConfig[globalData.getBetAmountIndex()];
 
             for (let i = 0; i < this.selectedBet.length; i++) {
                 if (i == this.selectedBetOption) {
@@ -113,8 +87,6 @@ cc.Class({
                 }
             }
 
-            // this.currentBettingLabel.string = this.currentBetting;
-            // this.moneyPerScoreLabel.string = "1 Score = " + Math.round(((this.currentBetting / globalData.winMultiplier[this.selectedBetOption])*100/100) * 1000) / 1000;
             globalData.setMultiplier(Math.round(this.currentBetting / globalData.winMultiplier[this.selectedBetOption] * 10000) / 10000);
             if (globalData.settings.balance >= this.currentBetting && globalData.getSocket() != null) {
                 this.playButton.interactable = true;
@@ -152,17 +124,9 @@ cc.Class({
 			}
         }
         
-        if(this.selectedBetOption<3){
-            this.currentBetting=((1*this.myValue))*(this.selectedBetOption+1);
-        }
-        else{
-            this.currentBetting=((1*this.myValue)/(this.bettingOptionText.length-this.selectedBetOption))*10;
-        }
+        this.currentBetting = globalData.betRangeConfig[this.maintBetOption] * globalData.betAmountConfig[globalData.getBetAmountIndex()];
 
-        
-       // this.currentBettingLabel.string = this.currentBetting;
-    //    this.moneyPerScoreLabel.string = "1 Score = " + Math.round(((this.currentBetting / globalData.winMultiplier[this.selectedBetOption])*100/100) * 1000) / 1000;
-       globalData.setMultiplier(Math.round(this.currentBetting/globalData.winMultiplier[this.selectedBetOption]*10000)/10000);
+        globalData.setMultiplier(Math.round(this.currentBetting/globalData.winMultiplier[this.selectedBetOption]*10000)/10000);
 
         if (globalData.settings.balance >= this.currentBetting && globalData.getSocket() != null) {
             this.playButton.interactable = true;
@@ -184,7 +148,6 @@ cc.Class({
         return false;
     },
     pay(){
-    //    globalData.setBalance(globalData.getBalance()-this.currentBetting);
         if (!globalData.isDemo) {
             var emit_result = {
                 'host_id': globalData.host_id,

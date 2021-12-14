@@ -20,6 +20,10 @@ cc.Class({
 			default:[],
 			type:[cc.Node]
 		},
+		bet_options_label:{
+			default:[],
+			type:[cc.Label]
+		}
 
     },
     
@@ -39,9 +43,11 @@ cc.Class({
 
 	// update (dt) {},
 	
-	setOptionsAmount(index, amount){
-		this.label = this.bet_options[index].getChildByName("Label").getComponent(cc.Label);
-		this.label.string = amount;
+	setOptionsAmount(){
+		for(let i = 0; i < this.bet_options_label.length; i++){
+			let index = i;
+			this.bet_options_label[index].string = "x" + globalData.betRangeConfig[index];
+		}
 	},
 	setSprite(){
 		for(let i = 0; i < this.selectedBet.length; i++){

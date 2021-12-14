@@ -36,6 +36,15 @@ cc.Class({
 			default:null,
 			type:cc.Node,	
 		},
+
+		betSelectionNode:{
+			default:null,
+			type:cc.Node,
+		},
+		inGameBettingNode:{
+			default:null,
+			type:cc.Node,
+		},
     },
 
     // use this for initialization
@@ -91,6 +100,17 @@ cc.Class({
 							self.getComponent("Socket").connectSocket();
 						}
 						self.getErrorMessage();
+						global.betRangeConfig[0] = global.settings.bet_chip_1;
+						global.betRangeConfig[1] = global.settings.bet_chip_2;
+						global.betRangeConfig[2] = global.settings.bet_chip_3;
+						global.betRangeConfig[3] = global.settings.bet_chip_4;
+						global.betAmountConfig[0] = global.settings.bet_amount_1;
+						global.betAmountConfig[1] = global.settings.bet_amount_2;
+						global.betAmountConfig[2] = global.settings.bet_amount_3;
+						global.betAmountConfig[3] = global.settings.bet_amount_4;
+						global.betAmountConfig[4] = global.settings.bet_amount_5;
+						self.betSelectionNode.getComponent("BetSelection").setOptionsAmount();
+						self.inGameBettingNode.getComponent("InGameBetting").setAmountText();
 					}
 				
 				};
@@ -141,6 +161,18 @@ cc.Class({
 						self.getComponent("Socket").connectSocket();
 					}
 					self.getErrorMessage();
+					global.betRangeConfig[0] = global.settings.bet_chip_1;
+					global.betRangeConfig[1] = global.settings.bet_chip_2;
+					global.betRangeConfig[2] = global.settings.bet_chip_3;
+					global.betRangeConfig[3] = global.settings.bet_chip_4;
+					global.betAmountConfig[0] = global.settings.bet_amount_1;
+					global.betAmountConfig[1] = global.settings.bet_amount_2;
+					global.betAmountConfig[2] = global.settings.bet_amount_3;
+					global.betAmountConfig[3] = global.settings.bet_amount_4;
+					global.betAmountConfig[4] = global.settings.bet_amount_5;
+					self.betSelectionNode.getComponent("BetSelection").setOptionsAmount();
+					self.inGameBettingNode.getComponent("InGameBetting").setAmountText();
+					
 					if(global.settings==undefined){
 						self.errorLayer.active = true;
 						self.errorLabel.string = parsed.error.message;

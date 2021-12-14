@@ -194,7 +194,7 @@ cc.Class({
 
                     if (this.touchController.autoJumpEnable) {
                         // if(globalData.tofuSpawned <globalData.MaxWinMultiplier){
-                        if (this.main.accumulateMultiplier < globalData.MaxWinMultiplier) {
+                        if (this.main.accumulateMultiplier <= globalData.MaxWinMultiplier) {
                             cc.find("Canvas/Spawner").getComponent("TofuSpawner").spawn();
                         }
                     }

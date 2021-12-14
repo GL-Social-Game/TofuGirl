@@ -376,7 +376,6 @@ cc.Class({
                 this.loseText.string="Thank You For Playing!";
             }
             this.endGameScoreLabel.string = Math.round((this.total_add) * 100) / 100;
-            // this.endGameCalculationLabel.string = "(" + this.currentBetting + this.endGameScoreLabel.string + ")";
             this.endGameLayer.active = true;
             if(globalData.settings.balance>=this.currentBetting){
                 this.replayButton.interactable = true;
@@ -435,7 +434,6 @@ cc.Class({
                 this.loseText.string="Thank You For Playing!";
             }
             this.endGameScoreLabel.string = Math.round((this.total_add) * 100) / 100;
-            // this.endGameCalculationLabel.string = "(" + this.currentBetting + this.endGameScoreLabel.string + ")";
 
             this.endGameLayer.active = true;
             if(globalData.settings.balance>=this.currentBetting){
@@ -648,32 +646,7 @@ cc.Class({
     },
     calculateBetAmount(){
         this.maintBetOption = globalData.getBetSelection();
-        if (this.maintBetOption == 0) {
-            this.myValue = 1;
-        }
-        if (this.maintBetOption == 1) {
-            this.myValue = 5;
-
-        }
-        if (this.maintBetOption == 2) {
-            this.myValue = 10;
-        }
-        if (this.maintBetOption == 3) {
-            this.myValue = 20;
-        }
-
-        if(globalData.getBetAmountIndex() == 0){
-            this.currentBetting = ((1*this.myValue));
-        }
-        else if(globalData.getBetAmountIndex()==1){
-            this.currentBetting = ((1*this.myValue))*2;
-        }
-        else if(globalData.getBetAmountIndex()==2){
-            this.currentBetting = ((1*this.myValue))*3;
-        }
-        else{
-            this.currentBetting = ((1*this.myValue)/(5 - globalData.getBetAmountIndex()))*10;
-        }
+        this.currentBetting = globalData.betRangeConfig[this.maintBetOption] * globalData.betAmountConfig[globalData.getBetAmountIndex()];
 
         this.currentBettingLabel.string=this.currentBetting;
     },

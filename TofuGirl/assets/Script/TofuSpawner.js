@@ -129,7 +129,7 @@ cc.Class({
 
     spawn() {
         globalData.tofuSpawned++;
-        cc.log(globalData.tofuSpawned + " || " + globalData.maxTofuAmount);
+        // cc.log(globalData.tofuSpawned + " || " + globalData.maxTofuAmount);
         this.spawnSpeedState();
         // TODO: assign currentMultiplier based on checkpoint 
         var currentMultiplier;
@@ -180,6 +180,7 @@ cc.Class({
         }
         // if (!globalData.showResult) {
         this.main.accumulateMultiplier += currentMultiplier;
+        this.main.accumulateMultiplier = Math.round(this.main.accumulateMultiplier * 10) / 10;
         this.main.score.string = "x"+Math.round(this.main.accumulateMultiplier * 100) / 100;
         // }
         var random = parseInt(Math.random() * (1 + 1 - 0) + 0);
@@ -187,14 +188,14 @@ cc.Class({
         let rigidBody = tofu.getComponent(cc.RigidBody);
         tofu.parent = this.spawnLayer;
         tofu.getComponent("Tofu").multiplier = currentMultiplier;
-        // cc.log(this.main.accumulateMultiplier + "|| "+ globalData.MaxWinMultiplier);
+        cc.log(this.main.accumulateMultiplier + "|| "+ globalData.MaxWinMultiplier);
         if(globalData.tofuSpawned % 5 == 0){
             tofu.getComponent("Tofu").enableCountIndicator();
         }
         if (globalData.tofuSpawned >= globalData.maxTofuAmount) {
             tofu.getComponent("Tofu").finalTofu = true;
         }
-        if (this.main.accumulateMultiplier >= globalData.MaxWinMultiplier) {
+        if (this.main.accumulateMultiplier > globalData.MaxWinMultiplier) {
             tofu.getComponent("Tofu").isBoom = true;
         }
         else {

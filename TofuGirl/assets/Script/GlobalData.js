@@ -65,6 +65,9 @@ export var is_apollo_v3 = 1;
 export var host_id=0;
 export var access_token = 0;
 export var winMultiplier = [25,25,25,22.72727273,22.22222222];
+export var betRangeConfig = [2,4,6,8];
+export var betAmountConfig = [2,4,6,8,10];
+
 export function getMultiplier(){
     return multiplier;
 }
